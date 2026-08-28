@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NG SERVICE — La propreté notre priorité</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E4222A;
+    --red-dark:#C41A21;
+    --navy:#0C1526;
+    --navy-2:#101B33;
+    --blue:#1F4E9C;
+    --ink:#131A2A;
+    --gray:#5C6478;
+    --gray-light:#8992A3;
+    --line:#E7E9EF;
+    --bg-soft:#F6F7FA;
+    --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Montserrat',Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;height:auto;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 16px;
+  }
+  .eyebrow{
+    color:var(--red);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    display:block;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 20px;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    border-radius:4px;
+    border:2px solid transparent;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .2s;
+    text-align:center;
+  }
+  .btn-red{background:var(--red);color:#fff;}
+  .btn-red:hover{background:var(--red-dark);}
+  .btn-outline{border-color:rgba(255,255,255,.5);color:#fff;background:transparent;}
+  .btn-outline-navy{border-color:var(--navy);color:var(--navy);background:transparent;}
+  .btn-outline-navy:hover{background:var(--navy);color:#fff;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:relative;
+    z-index:20;
+    background:transparent;
+    padding:12px 0 0;
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    flex-wrap:nowrap;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+    min-width:0;
+  }
+  .logo-mark{
+    font-size:20px;
+    font-weight:900;
+    color:#fff;
+    letter-spacing:0.5px;
+    display:flex;
+    flex-direction:column;
+    line-height:1;
+  }
+  .logo-mark .ng{color:var(--red);}
+  .logo-sub{
+    font-size:7px;
+    letter-spacing:1.2px;
+    color:#cfd4e0;
+    margin-top:2px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:20px;
+  }
+  .nav-links a{
+    color:#fff;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.4px;
+    padding-bottom:4px;
+    border-bottom:2px solid transparent;
+    transition:border-color .2s;
+    white-space:nowrap;
+  }
+  .nav-links a.active{border-color:var(--red);}
+  .nav-links a:hover{border-color:var(--red);}
+
+  .nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+  }
+  .nav-actions .btn{
+    font-size:11px;
+    padding:10px 16px;
+  }
+  .nav-actions .btn span{display:inline;}
+  .nav-actions .btn .short{display:none;}
+
+  .burger{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:4px;
+    z-index:60;
+    flex-shrink:0;
+  }
+  .burger span{
+    width:22px;
+    height:2px;
+    background:#fff;
+    display:block;
+    transition:all .2s;
+    border-radius:1px;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:520px;
+    background:linear-gradient(100deg, rgba(10,15,28,.94) 0%, rgba(10,15,28,.72) 38%, rgba(10,15,28,.28) 62%, rgba(10,15,28,.15) 100%),
+      url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    padding-top:0;
+    display:flex;
+    flex-direction:column;
+  }
+  header.on-hero{position:absolute;top:0;left:0;right:0;}
+  .hero-body{
+    flex:1;
+    display:flex;
+    align-items:center;
+    padding:80px 0 30px;
+  }
+  .hero-content{
+    max-width:560px;
+    width:100%;
+  }
+  .hero-content h1{
+    color:#fff;
+    font-size:32px;
+    line-height:1.08;
+    font-weight:900;
+    letter-spacing:-0.5px;
+    margin-bottom:14px;
+  }
+  .hero-content h1 .accent{color:var(--red);}
+  .hero-content p{
+    color:#d7dbe6;
+    font-size:14px;
+    line-height:1.6;
+    max-width:440px;
+    margin-bottom:20px;
+  }
+  .hero-cta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:0;
+  }
+  .hero-cta .btn{font-size:11px;padding:11px 16px;}
+  .hero-stats{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 16px;
+    margin-top:30px;
+    border-top:1px solid rgba(255,255,255,.18);
+    padding-top:16px;
+  }
+  .hero-stats .stat{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .stat-ico{
+    width:26px;
+    height:26px;
+    border:1.5px solid var(--red);
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .stat-ico svg{width:13px;height:13px;stroke:var(--red);fill:none;}
+  .stat-text b{
+    display:block;
+    color:#fff;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.3px;
+  }
+  .stat-text span{
+    display:block;
+    color:#a9afc0;
+    font-size:9px;
+    margin-top:0px;
+  }
+  .hero-ba{display:none;}
+
+  /* ===== SERVICES ===== */
+  .services{padding:60px 0 50px;background:#fff;}
+  .services-head{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:24px;
+  }
+  .services-head h2{
+    font-size:24px;
+    font-weight:800;
+    line-height:1.25;
+    color:var(--navy);
+    max-width:100%;
+  }
+  .services-head h2 .blue{color:var(--blue);}
+  .services-head p{
+    max-width:100%;
+    color:var(--gray);
+    font-size:13px;
+    line-height:1.6;
+  }
+  .service-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+    margin-top:20px;
+  }
+  .service-card{
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    transition:box-shadow .2s, transform .2s;
+  }
+  .service-card:hover{box-shadow:0 14px 30px rgba(20,30,60,.1);transform:translateY(-3px);}
+  .service-card .thumb{
+    height:150px;
+    overflow:hidden;
+    position:relative;
+  }
+  .service-card .thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .service-icon{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:absolute;
+    left:16px;
+    bottom:-20px;
+    border:4px solid #fff;
+  }
+  .service-icon.blue{background:var(--blue);}
+  .service-icon svg{width:16px;height:16px;stroke:#fff;fill:none;}
+  .service-card .body{padding:28px 16px 18px;}
+  .service-card h3{
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:4px;
+    color:var(--navy);
+  }
+  .service-card p{
+    font-size:12px;
+    color:var(--gray);
+    line-height:1.6;
+  }
+
+  /* ===== WHY US ===== */
+  .why{background:var(--navy);color:#fff;padding:40px 0;}
+  .why-head{text-align:center;margin-bottom:28px;}
+  .why-head .eyebrow{justify-content:center;}
+  .why-head h2{
+    font-size:22px;
+    font-weight:800;
+  }
+  .why-head h2 .blue{color:#4C8DFF;}
+  .why-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .why-item{
+    text-align:center;
+    padding:0 8px;
+  }
+  .why-item:not(:last-child){
+    border-bottom:1px solid rgba(255,255,255,.12);
+    padding-bottom:20px;
+  }
+  .why-ico{
+    width:44px;
+    height:44px;
+    margin:0 auto 10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .why-ico svg{
+    width:28px;
+    height:28px;
+    stroke:var(--red);
+    fill:none;
+    stroke-width:1.6;
+  }
+  .why-ico.blue svg{stroke:#4C8DFF;}
+  .why-item h4{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.5px;
+    margin-bottom:4px;
+  }
+  .why-item p{
+    font-size:11px;
+    color:#aab0c2;
+    line-height:1.6;
+    max-width:260px;
+    margin:0 auto;
+  }
+
+  /* ===== REALISATIONS ===== */
+  .real{padding:50px 0;background:#fff;}
+  .real-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .real-head h2{
+    font-size:22px;
+    font-weight:800;
+    color:var(--navy);
+    line-height:1.3;
+    margin-bottom:10px;
+  }
+  .real-head h2 .blue{color:var(--blue);}
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:14px;
+  }
+  .tab{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.3px;
+    padding:6px 12px;
+    border-radius:20px;
+    border:1px solid var(--line);
+    color:var(--gray);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .tab.active{
+    background:var(--red);
+    color:#fff;
+    border-color:var(--red);
+  }
+  .real-gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:6px;
+  }
+  .real-gallery .g-item{
+    aspect-ratio:1/1;
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .real-gallery .g-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .real-more{margin-top:14px;}
+
+  .real-side{display:flex;flex-direction:column;gap:16px;}
+  .panel{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:12px;
+  }
+  .panel .panel-title{
+    font-size:10px;
+    font-weight:800;
+    color:var(--red);
+    letter-spacing:.5px;
+    margin-bottom:8px;
+  }
+  .ba-wide{
+    position:relative;
+    border-radius:6px;
+    overflow:hidden;
+    aspect-ratio:16/10;
+    cursor:ew-resize;
+  }
+  .ba-wide img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .ba-wide .ba-left{clip-path:inset(0 50% 0 0);}
+  .ba-tag{
+    position:absolute;
+    top:6px;
+    font-size:8px;
+    font-weight:800;
+    color:#fff;
+    letter-spacing:.5px;
+    background:rgba(0,0,0,.55);
+    padding:2px 6px;
+    border-radius:2px;
+    pointer-events:none;
+  }
+  .ba-tag.left{left:6px;}
+  .ba-tag.right{right:6px;}
+  .ba-handle{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:24px;
+    height:24px;
+    background:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:9px;
+    color:#333;
+    box-shadow:0 2px 6px rgba(0,0,0,.3);
+    pointer-events:none;
+  }
+  .video-panel p.sub{
+    font-size:11px;
+    color:var(--gray);
+    margin:-2px 0 10px;
+  }
+  .video-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+    margin-bottom:12px;
+  }
+  .video-thumb{
+    position:relative;
+    aspect-ratio:16/10;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .video-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .video-thumb .play{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(10,15,28,.28);
+  }
+  .video-thumb .play span{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:rgba(255,255,255,.92);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:9px;
+    color:var(--navy);
+  }
+  .video-thumb .dur{
+    position:absolute;
+    bottom:3px;
+    right:3px;
+    font-size:7px;
+    color:#fff;
+    background:rgba(0,0,0,.55);
+    padding:1px 4px;
+    border-radius:2px;
+  }
+  .link-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.4px;
+    color:var(--blue);
+    border:1px solid var(--line);
+    padding:8px 14px;
+    border-radius:5px;
+    transition:all .2s;
+  }
+  .link-btn:hover{background:var(--bg-soft);}
+
+  /* ===== CTA BAND ===== */
+  .cta-band{
+    background:var(--navy);
+    position:relative;
+    overflow:hidden;
+    padding:30px 0;
+  }
+  .cta-inner{
+    position:relative;
+    z-index:2;
+    text-align:center;
+  }
+  .cta-inner h3{
+    color:#fff;
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:2px;
+  }
+  .cta-inner p{
+    color:#c3c8d8;
+    font-size:13px;
+    margin-bottom:14px;
+  }
+  .cta-inner .btn{font-size:11px;padding:11px 18px;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy);color:#c3c8d8;padding:32px 0 0;font-size:12px;}
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .foot-logo{display:flex;flex-direction:column;margin-bottom:8px;}
+  .foot-logo .logo-mark{font-size:18px;color:#fff;}
+  .foot-col h5{
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.6px;
+    margin-bottom:10px;
+  }
+  .foot-col ul li{margin-bottom:6px;color:#aab0c2;font-size:12px;}
+  .foot-col ul li.check{display:flex;align-items:center;gap:6px;}
+  .foot-col ul li.check::before{content:'✓';color:#4C8DFF;font-size:10px;font-weight:800;}
+  .foot-contact li{
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
+    color:#aab0c2;
+    line-height:1.5;
+    font-size:12px;
+  }
+  .foot-social{
+    display:flex;
+    gap:8px;
+    margin-top:10px;
+  }
+  .foot-social a{
+    width:28px;
+    height:28px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    transition:all .2s;
+  }
+  .foot-social a:hover{background:var(--red);border-color:var(--red);}
+  .foot-bottom{
+    background:var(--blue);
+    text-align:center;
+    padding:10px 0;
+    font-size:10px;
+    color:#fff;
+    position:relative;
+    margin-top:0;
+  }
+  .foot-bottom .up{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    width:22px;
+    height:22px;
+    background:var(--red);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+    color:#fff;
+    border-radius:3px;
+    cursor:pointer;
+  }
+
+  /* ============================================================ */
+  /* ====== BREAKPOINTS ====== */
+  /* ============================================================ */
+
+  /* --- MOBILE → on garde les valeurs par défaut --- */
+
+  /* --- PETIT MOBILE (≥ 400px) --- */
+  @media(min-width:400px){
+    .wrap{padding:0 20px;}
+    .hero-content h1{font-size:36px;}
+    .logo-mark{font-size:22px;}
+    .logo-sub{font-size:8px;}
+    .nav-actions .btn{font-size:12px;padding:10px 18px;}
+    .hero-stats .stat{width:auto;}
+  }
+
+  /* --- MOYEN MOBILE / TABLETTE (≥ 600px) --- */
+  @media(min-width:600px){
+    .wrap{padding:0 24px;}
+    .hero-content h1{font-size:38px;}
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .why-item:not(:last-child){
+      border-bottom:none;
+      padding-bottom:0;
+    }
+    .why-item{position:relative;padding:0 16px;}
+    .why-item:nth-child(odd):not(:last-child)::after{
+      content:'';
+      position:absolute;
+      right:0;
+      top:8px;
+      bottom:8px;
+      width:1px;
+      background:rgba(255,255,255,.14);
+    }
+    .foot-grid{grid-template-columns:repeat(2,1fr);}
+    .real-gallery{grid-template-columns:repeat(4,1fr);}
+    .real-gallery .g-item{aspect-ratio:auto;height:90px;}
+    .hero-ba{display:block;}
+    .services-head{
+      flex-direction:row;
+      justify-content:space-between;
+      align-items:flex-end;
+    }
+    .services-head h2{max-width:430px;}
+    .services-head p{max-width:340px;}
+  }
+
+  /* --- TABLETTE LARGE (≥ 768px) --- */
+  @media(min-width:768px){
+    .hero-content h1{font-size:42px;}
+    .hero-stats{gap:14px 28px;}
+    .hero-stats .stat:not(:last-child){
+      padding-right:16px;
+      border-right:1px solid rgba(255,255,255,.18);
+    }
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(4,1fr);}
+    .why-item:nth-child(odd)::after{display:none;}
+    .why-item:not(:last-child)::after{
+      content:'';
+      position:absolute;
+      right:0;
+      top:8px;
+      bottom:8px;
+      width:1px;
+      background:rgba(255,255,255,.14);
+    }
+    .why-item{padding:0 20px;}
+    .real-grid{grid-template-columns:1.35fr 1fr;}
+    .foot-grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr;}
+    .hero-ba{
+      position:absolute;
+      right:24px;
+      bottom:-40px;
+      width:200px;
+      background:#fff;
+      border-radius:6px;
+      padding:6px;
+      box-shadow:0 20px 40px rgba(0,0,0,.35);
+      z-index:5;
+    }
+    .ba-imgs{
+      position:relative;
+      border-radius:3px;
+      overflow:hidden;
+      aspect-ratio:16/10;
+    }
+    .ba-imgs img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .ba-imgs .ba-left{clip-path:inset(0 50% 0 0);}
+    .foot-bottom .up{display:flex;}
+  }
+
+  /* --- DESKTOP (≥ 1024px) --- */
+  @media(min-width:1024px){
+    .wrap{padding:0 32px;}
+    .hero-content h1{font-size:47px;}
+    .hero-body{padding:100px 0 60px;}
+    .hero-ba{width:230px;right:32px;bottom:-56px;}
+    .hero-ba .ba-imgs{height:140px;aspect-ratio:auto;}
+    .service-grid{grid-template-columns:repeat(4,1fr);}
+    .services{padding:100px 0 80px;}
+    .why{padding:56px 0;}
+    .real{padding:80px 0;}
+    .nav-links{display:flex;}
+    .burger{display:none;}
+    .foot-grid{gap:32px;}
+    .nav-actions .btn .short{display:none;}
+    .nav-actions .btn .full{display:inline;}
+  }
+
+  /* --- GRAND ÉCRAN (≥ 1440px) --- */
+  @media(min-width:1440px){
+    .hero-content h1{font-size:52px;}
+  }
+
+  /* ===== MENU MOBILE (en dessous de 1024px) ===== */
+  @media(max-width:1023px){
+    .nav-links{
+      position:fixed;
+      top:0;
+      right:-280px;
+      width:260px;
+      height:100vh;
+      background:var(--navy-2);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:80px 24px 24px;
+      gap:18px;
+      transition:right .3s ease;
+      box-shadow:-8px 0 24px rgba(0,0,0,.3);
+      z-index:55;
+      overflow-y:auto;
+    }
+    .nav-links.open{right:0;}
+    .nav-links a{font-size:14px;color:#fff;}
+    .burger{display:flex;}
+    .nav-actions .btn .full{display:none;}
+    .nav-actions .btn .short{display:inline;}
+  }
+
+  /* --- TRÈS PETIT MOBILE (< 380px) --- */
+  @media(max-width:379px){
+    .hero-content h1{font-size:26px;}
+    .hero-content p{font-size:12px;}
+    .btn{font-size:9px;padding:8px 10px;}
+    .hero-cta .btn{font-size:9px;padding:8px 10px;}
+    .nav-actions .btn{font-size:9px;padding:6px 10px;}
+    .logo-mark{font-size:16px;}
+    .logo-sub{font-size:6px;}
+    .hero-stats .stat{width:100%;}
+    .stat-text b{font-size:9px;}
+    .stat-text span{font-size:8px;}
+    .service-card .thumb{height:120px;}
+    .real-gallery{grid-template-columns:repeat(2,1fr);gap:4px;}
+    .video-grid{grid-template-columns:repeat(3,1fr);gap:4px;}
+    .foot-bottom{font-size:9px;}
+    .foot-bottom .up{display:none;}
+    .services-head h2{font-size:20px;}
+    .why-head h2{font-size:18px;}
+    .cta-inner h3{font-size:16px;}
+    .cta-inner p{font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <header class="on-hero">
+    <div class="wrap nav-row">
+      <div class="logo">
+        <div>
+          <div class="logo-mark"><span class="ng">NG</span> SERVICE</div>
+          <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+        </div>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="active">ACCUEIL</a>
+        <a href="services.html">NOS SERVICES</a>
+        <a href="realisations.html">RÉALISATIONS</a>
+        <a href="apropos.html">À PROPOS</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="devis.html" class="btn btn-red">
+          <span class="full">DEMANDER UN DEVIS</span>
+          <span class="short">DEVIS</span>
+          <span>✎</span>
+        </a>
+        <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap hero-body">
+    <div class="hero-content">
+      <h1>LA PROPRETÉ<br>QUI FAIT<br><span class="accent">LA DIFFÉRENCE</span></h1>
+      <p>NG SERVICE vous accompagne avec des solutions professionnelles de nettoyage adaptées à vos besoins.</p>
+      <div class="hero-cta">
+        <a href="devis.html" class="btn btn-red">DEMANDER UN DEVIS →</a>
+        <a href="services.html" class="btn btn-outline">NOS SERVICES →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="stat-text"><b>PROFESSIONNELS</b><span>Qualifiés</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+          <div class="stat-text"><b>RAPIDES</b><span>Interventions</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="stat-text"><b>FIABLES</b><span>Qualité</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="stat-text"><b>DISPONIBLES</b><span>7j/7</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-ba">
+    <div class="ba-imgs">
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400&auto=format&fit=crop" alt="Après">
+      <img class="ba-left" src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=400&auto=format&fit=crop" alt="Avant">
+      <span class="ba-tag left">AVANT</span>
+      <span class="ba-tag right">APRÈS</span>
+      <div class="ba-handle">⇔</div>
+    </div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <h2>Des solutions de nettoyage adaptées à <span class="blue">chaque besoin</span></h2>
+      <p>NG SERVICE vous propose une gamme complète de prestations pour garantir la propreté et l'hygiène de vos espaces.</p>
+    </div>
+    <span class="eyebrow">NOS SERVICES</span>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=500&auto=format&fit=crop" alt="Nettoyage professionnel" loading="lazy">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="body">
+          <h3>Nettoyage professionnel</h3>
+          <p>Entretien complet de vos locaux professionnels avec des produits et matériels adaptés.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=500&auto=format&fit=crop" alt="Nettoyage de bureaux" loading="lazy">
+          <div class="service-icon blue"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="1"/><path d="M9 21h6M12 16v5" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="body">
+          <h3>Nettoyage de bureaux</h3>
+          <p>Des espaces de travail propres pour un environnement sain et productif.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?q=80&w=500&auto=format&fit=crop" alt="Nettoyage résidentiel" loading="lazy">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7M6 10v10h12V10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="body">
+          <h3>Nettoyage résidentiel</h3>
+          <p>Nous prenons soin de votre maison pour un cadre de vie propre et agréable.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1580901368919-7738efb0f87e?q=80&w=500&auto=format&fit=crop" alt="Nettoyage après travaux" loading="lazy">
+          <div class="service-icon blue"><svg viewBox="0 0 24 24"><path d="M14.7 6.3l3 3L7 20H4v-3L14.7 6.3z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="body">
+          <h3>Nettoyage après travaux</h3>
+          <p>Remise en état de vos espaces après travaux : poussières, déchets et résidus éliminés.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="why-head">
+      <span class="eyebrow">POURQUOI NOUS CHOISIR</span>
+      <h2>NG SERVICE, <span class="blue">l'excellence</span> à chaque intervention</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>PROFESSIONNALISME</h4>
+        <p>Une équipe formée et expérimentée pour un travail impeccable.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-ico blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M9 12.5L7 21l5-3 5 3-2-8.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>QUALITÉ</h4>
+        <p>Des produits de qualité et des méthodes efficaces.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+        <h4>RAPIDITÉ</h4>
+        <p>Interventions rapides et respect des délais convenus.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-ico blue"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6M17 8a3 3 0 100-6M22 20c0-3-2-5-4-5.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>SATISFACTION</h4>
+        <p>Votre satisfaction est notre priorité absolue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="real" id="realisations">
+  <div class="wrap real-grid">
+    <div class="real-main">
+      <div class="real-head">
+        <span class="eyebrow">NOS RÉALISATIONS</span>
+        <h2>Quelques-unes de nos <span class="blue">interventions</span></h2>
+      </div>
+      <div class="tabs">
+        <span class="tab active">TOUTES</span>
+        <span class="tab">BUREAUX</span>
+        <span class="tab">RÉSIDENTIEL</span>
+        <span class="tab">APRÈS TRAVAUX</span>
+      </div>
+      <div class="real-gallery">
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1585421514738-01798e348b17?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
+      </div>
+      <div class="real-more"><a class="link-btn" href="realisations.html">VOIR PLUS DE RÉALISATIONS →</a></div>
+    </div>
+
+    <div class="real-side">
+      <div class="panel">
+        <div class="panel-title">AVANT / APRÈS</div>
+        <div class="ba-wide">
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=500&auto=format&fit=crop" alt="Après">
+          <img class="ba-left" src="https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=500&auto=format&fit=crop" alt="Avant">
+          <span class="ba-tag left">AVANT</span>
+          <span class="ba-tag right">APRÈS</span>
+          <div class="ba-handle">⇔</div>
+        </div>
+      </div>
+      <div class="panel video-panel">
+        <div class="panel-title">NOS RÉALISATIONS VIDÉO</div>
+        <p class="sub">Découvrez notre travail en action</p>
+        <div class="video-grid">
+          <div class="video-thumb"><img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?q=80&w=200&auto=format&fit=crop" alt="" loading="lazy"><div class="play"><span>▶</span></div><span class="dur">01:25</span></div>
+          <div class="video-thumb"><img src="https://images.unsplash.com/photo-1581578021450-63a1a531c8f9?q=80&w=200&auto=format&fit=crop" alt="" loading="lazy"><div class="play"><span>▶</span></div><span class="dur">01:40</span></div>
+          <div class="video-thumb"><img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=200&auto=format&fit=crop" alt="" loading="lazy"><div class="play"><span>▶</span></div><span class="dur">01:18</span></div>
+        </div>
+        <a class="link-btn" href="realisations.html">VOIR TOUTES LES VIDÉOS →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="devis">
+  <div class="wrap cta-inner">
+    <h3>BESOIN D'UN ESPACE IMPECCABLE ?</h3>
+    <p>Parlons de votre projet</p>
+    <a href="devis.html" class="btn btn-red">DEMANDER UN DEVIS GRATUIT →</a>
+  </div>
+</section>
+
+<footer id="apropos">
+  <div class="wrap foot-grid">
+    <div class="foot-col">
+      <div class="foot-logo">
+        <div class="logo-mark"><span class="ng">NG</span> SERVICE</div>
+        <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+      </div>
+      <p style="color:#aab0c2;line-height:1.7;font-size:11.5px;max-width:260px;">NG SERVICE est une entreprise spécialisée dans le nettoyage professionnel. Nous intervenons pour les entreprises et les particuliers avec rigueur et efficacité.</p>
+      <div class="foot-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>LIENS RAPIDES</h5>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="services.html">Nos services</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>NOS SERVICES</h5>
+      <ul>
+        <li class="check">Nettoyage professionnel</li>
+        <li class="check">Nettoyage de bureaux</li>
+        <li class="check">Nettoyage résidentiel</li>
+        <li class="check">Nettoyage après travaux</li>
+      </ul>
+    </div>
+    <div class="foot-col" id="contact">
+      <h5>NOS COORDONNÉES</h5>
+      <ul class="foot-contact">
+        <li>📞 <span>+242 06 123 45 67<br>+242 05 987 65 43</span></li>
+        <li>✉️ <span>contact@ngservice.cg</span></li>
+        <li>📍 <span>123, Avenue de la Propreté<br>Pointe-Noire, Congo</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    © 2024 NG SERVICE - Tous droits réservés.
+    <span class="up" aria-label="Retour en haut">▲</span>
+  </div>
+</footer>
+
+<script>
+  // Menu burger
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  }
+
+  // Avant / Après (drag)
+  document.querySelectorAll('.ba-imgs, .ba-wide').forEach(media => {
+    const left = media.querySelector('.ba-left');
+    if (!left) return;
+    const setPos = (x) => {
+      const rect = media.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.max(0, Math.min(100, pct));
+      left.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      const handle = media.querySelector('.ba-handle');
+      if (handle) handle.style.left = pct + '%';
+    };
+    media.addEventListener('mousemove', e => setPos(e.clientX));
+    media.addEventListener('touchmove', e => {
+      e.preventDefault();
+      setPos(e.touches[0].clientX);
+    });
+  });
+
+  // Scroll to top
+  document.querySelector('.foot-bottom .up')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>

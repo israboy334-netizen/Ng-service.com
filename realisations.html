@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos Réalisations — NG SERVICE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E4222A;
+    --red-dark:#C41A21;
+    --navy:#0C1526;
+    --navy-2:#101B33;
+    --blue:#1F4E9C;
+    --ink:#131A2A;
+    --gray:#5C6478;
+    --gray-light:#8992A3;
+    --line:#E7E9EF;
+    --bg-soft:#F6F7FA;
+    --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Montserrat',Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;height:auto;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 16px;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 18px;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    border-radius:5px;
+    border:2px solid transparent;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .2s;
+  }
+  .btn-red{background:var(--red);color:#fff;}
+  .btn-red:hover{background:var(--red-dark);}
+  .btn-blue{background:var(--blue);color:#fff;}
+  .btn-blue:hover{background:#173e7d;}
+
+  /* ===== HEADER ===== */
+  header{background:var(--navy);position:relative;z-index:50;}
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 0;
+    gap:8px;
+    flex-wrap:nowrap;
+  }
+  .logo{
+    display:flex;
+    flex-direction:column;
+    flex-shrink:0;
+  }
+  .logo-mark{
+    font-size:20px;
+    font-weight:900;
+    color:#fff;
+    letter-spacing:0.5px;
+    line-height:1;
+  }
+  .logo-mark .ng{color:var(--red);}
+  .logo-sub{
+    font-size:7px;
+    letter-spacing:1.2px;
+    color:#cfd4e0;
+    margin-top:2px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:20px;
+  }
+  .nav-links a{
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.4px;
+    padding-bottom:4px;
+    border-bottom:2px solid transparent;
+    transition:border-color .2s;
+    white-space:nowrap;
+  }
+  .nav-links a.active{color:var(--red);border-color:var(--red);}
+  .nav-links a:hover{border-color:var(--red);}
+  .nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+  }
+  .nav-actions .btn{
+    font-size:11px;
+    padding:10px 14px;
+  }
+  .nav-actions .btn .full{display:inline;}
+  .nav-actions .btn .short{display:none;}
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:4px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:4px;
+    flex-shrink:0;
+  }
+  .burger span{
+    width:22px;
+    height:2px;
+    background:#fff;
+    display:block;
+    border-radius:1px;
+  }
+
+  /* ===== PAGE HERO ===== */
+  .page-hero{
+    position:relative;
+    background:linear-gradient(100deg, rgba(8,13,25,.94) 0%, rgba(8,13,25,.8) 45%, rgba(8,13,25,.55) 100%),
+      url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1600&auto=format&fit=crop') center 30%/cover no-repeat;
+    padding:30px 0 28px;
+  }
+  .bar-accent{width:44px;height:4px;background:var(--red);margin-bottom:14px;}
+  .page-hero h1{
+    color:#fff;
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:.3px;
+    margin-bottom:8px;
+  }
+  .breadcrumb{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;
+    color:#aab0c2;
+    margin-bottom:14px;
+    font-weight:600;
+    flex-wrap:wrap;
+  }
+  .breadcrumb .sep{color:#5c6478;}
+  .breadcrumb .current{color:var(--red);}
+  .page-hero p{
+    color:#c3c8d8;
+    font-size:13px;
+    line-height:1.6;
+    max-width:440px;
+  }
+
+  .hero-stats-row{
+    display:flex;
+    align-items:center;
+    gap:12px 20px;
+    flex-wrap:wrap;
+    margin-top:22px;
+    padding-top:18px;
+    border-top:1px solid rgba(255,255,255,.14);
+  }
+  .stat-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .stat-ico{
+    width:34px;
+    height:34px;
+    border-radius:8px;
+    background:rgba(228,34,42,.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .stat-ico.blue{background:rgba(31,78,156,.18);}
+  .stat-ico svg{
+    width:18px;
+    height:18px;
+    stroke:var(--red);
+    fill:none;
+    stroke-width:1.7;
+  }
+  .stat-ico.blue svg{stroke:#5B8FE0;}
+  .stat-box b{
+    display:block;
+    color:#fff;
+    font-size:18px;
+    font-weight:800;
+    line-height:1.1;
+  }
+  .stat-box span{
+    display:block;
+    color:#a9afc0;
+    font-size:10px;
+    margin-top:2px;
+    line-height:1.3;
+  }
+
+  /* ===== FILTER BAR ===== */
+  .filter-bar{
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    background:#fff;
+    z-index:40;
+  }
+  .filter-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .filters{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .filter-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 14px;
+    border-radius:20px;
+    border:1px solid var(--line);
+    font-size:11px;
+    font-weight:700;
+    color:var(--ink);
+    cursor:pointer;
+    background:#fff;
+    white-space:nowrap;
+    transition:all .2s;
+  }
+  .filter-chip svg{
+    width:13px;
+    height:13px;
+    stroke:currentColor;
+    fill:none;
+    stroke-width:1.7;
+  }
+  .filter-chip.active{
+    background:var(--red);
+    border-color:var(--red);
+    color:#fff;
+  }
+  .sort-select{
+    padding:9px 14px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:11px;
+    font-weight:600;
+    color:var(--ink);
+    background:#fff;
+    flex-shrink:0;
+  }
+
+  /* ===== GALLERY ===== */
+  .gallery{padding:28px 0 48px;}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .g-card{
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    background:#fff;
+    transition:box-shadow .2s, transform .2s;
+  }
+  .g-card:hover{box-shadow:0 16px 34px rgba(20,30,60,.12);transform:translateY(-3px);}
+  .g-media{
+    position:relative;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    cursor:ew-resize;
+  }
+  .g-media img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .g-media .ba-left{clip-path:inset(0 50% 0 0);}
+  .cat-tag{
+    position:absolute;
+    top:8px;
+    left:8px;
+    font-size:8.5px;
+    font-weight:800;
+    letter-spacing:.4px;
+    color:#fff;
+    padding:3px 8px;
+    border-radius:3px;
+    background:var(--blue);
+    text-transform:uppercase;
+    z-index:2;
+  }
+  .cat-tag.residentiel{background:var(--red);}
+  .cat-tag.industriel{background:var(--red);}
+  .cat-tag.travaux{background:var(--red);}
+  .after-tag{
+    position:absolute;
+    top:8px;
+    right:8px;
+    font-size:8.5px;
+    font-weight:800;
+    letter-spacing:.4px;
+    color:#fff;
+    padding:3px 8px;
+    border-radius:3px;
+    background:var(--blue);
+    z-index:2;
+  }
+  .before-lbl{
+    position:absolute;
+    bottom:8px;
+    left:8px;
+    font-size:8.5px;
+    font-weight:800;
+    letter-spacing:.4px;
+    color:#fff;
+    padding:3px 8px;
+    border-radius:3px;
+    background:rgba(0,0,0,.55);
+    z-index:2;
+  }
+  .ba-handle{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:26px;
+    height:26px;
+    background:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+    color:#333;
+    box-shadow:0 2px 8px rgba(0,0,0,.3);
+    z-index:3;
+    pointer-events:none;
+  }
+  .play-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(10,15,28,.22);
+  }
+  .play-overlay span{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,.94);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    color:var(--navy);
+  }
+  .g-body{padding:14px 16px 16px;}
+  .g-body h3{
+    font-size:13.5px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:6px;
+    line-height:1.35;
+  }
+  .g-date{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:11px;
+    color:var(--gray);
+    font-weight:600;
+  }
+  .g-date svg{
+    width:12px;
+    height:12px;
+    stroke:var(--gray);
+    fill:none;
+    stroke-width:1.7;
+  }
+  .g-card-link{display:block;}
+
+  .load-more{text-align:center;margin-top:28px;}
+  .load-more .btn-outline-navy{
+    border:2px solid var(--line);
+    color:var(--navy);
+    background:#fff;
+  }
+  .load-more .btn-outline-navy:hover{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+
+  /* ===== CTA BAND ===== */
+  .cta-band{
+    background:var(--navy);
+    position:relative;
+    overflow:hidden;
+    padding:28px 0;
+  }
+  .cta-band .diag-l,
+  .cta-band .diag-r{display:none;}
+  .cta-band .bg-img{
+    position:absolute;
+    inset:0;
+    background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop') center/cover;
+    opacity:.12;
+    mix-blend-mode:luminosity;
+  }
+  .cta-inner{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    text-align:center;
+  }
+  .cta-left{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .cta-ico{
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    background:var(--red);
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .cta-ico svg{
+    width:20px;
+    height:20px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:1.6;
+  }
+  .cta-left h3{
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .cta-mid{
+    color:#dfe2ec;
+    font-size:13px;
+    line-height:1.5;
+    max-width:400px;
+  }
+  .cta-mid b{color:#fff;display:block;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy);color:#c3c8d8;padding:36px 0 0;font-size:12px;}
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .foot-logo{display:flex;flex-direction:column;margin-bottom:10px;}
+  .foot-logo .logo-mark{font-size:20px;}
+  .foot-col h5{
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.6px;
+    margin-bottom:12px;
+  }
+  .foot-col ul li{margin-bottom:8px;color:#aab0c2;font-size:12px;}
+  .foot-col ul li a:hover{color:#fff;}
+  .foot-col ul li.active-link a{color:var(--red);}
+  .foot-col ul li.check{display:flex;align-items:center;gap:6px;}
+  .foot-col ul li.check::before{content:'✓';color:#4C8DFF;font-size:10px;font-weight:800;}
+  .foot-contact li{
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
+    color:#aab0c2;
+    line-height:1.5;
+    font-size:12px;
+  }
+  .foot-social{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+  }
+  .foot-social a{
+    width:28px;
+    height:28px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    transition:all .2s;
+  }
+  .foot-social a:hover{background:var(--red);border-color:var(--red);}
+  .foot-bottom{
+    text-align:center;
+    padding:14px 0;
+    font-size:10px;
+    color:#aab0c2;
+  }
+
+  /* ============================================================ */
+  /* ====== BREAKPOINTS ====== */
+  /* ============================================================ */
+
+  /* --- PETIT MOBILE (≥ 380px) --- */
+  @media(min-width:380px){
+    .wrap{padding:0 18px;}
+    .page-hero h1{font-size:30px;}
+    .logo-mark{font-size:22px;}
+    .logo-sub{font-size:8px;}
+    .nav-actions .btn{font-size:12px;padding:10px 16px;}
+    .g-body h3{font-size:14px;}
+  }
+
+  /* --- MOBILE / TABLETTE (≥ 600px) --- */
+  @media(min-width:600px){
+    .wrap{padding:0 24px;}
+    .page-hero{padding:36px 0 32px;}
+    .page-hero h1{font-size:32px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+    .hero-stats-row{gap:16px 32px;}
+    .stat-box:not(:last-child){
+      padding-right:20px;
+      border-right:1px solid rgba(255,255,255,.16);
+    }
+    .stat-box b{font-size:20px;}
+    .stat-box span{font-size:11px;}
+    .foot-grid{grid-template-columns:repeat(2,1fr);}
+    .cta-inner{flex-direction:row;text-align:left;gap:20px;}
+    .cta-left{flex-direction:row;}
+    .cta-mid{max-width:none;flex:1;}
+    .cta-left h3{font-size:16px;}
+  }
+
+  /* --- TABLETTE LARGE (≥ 768px) --- */
+  @media(min-width:768px){
+    .page-hero h1{font-size:34px;}
+    .gallery-grid{grid-template-columns:repeat(3,1fr);gap:24px;}
+    .filter-chip{font-size:12px;padding:10px 18px;}
+    .filter-chip svg{width:14px;height:14px;}
+    .cta-band .diag-l,
+    .cta-band .diag-r{
+      display:block;
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:160px;
+      background:var(--red);
+      z-index:0;
+    }
+    .cta-band .diag-l{left:-60px;clip-path:polygon(0 0,100% 0,55% 100%,0 100%);}
+    .cta-band .diag-r{right:-60px;clip-path:polygon(45% 0,100% 0,100% 100%,0 100%);}
+    .foot-grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px;}
+  }
+
+  /* --- DESKTOP (≥ 1024px) --- */
+  @media(min-width:1024px){
+    .wrap{padding:0 32px;}
+    .page-hero{padding:44px 0 40px;}
+    .page-hero h1{font-size:38px;}
+    .gallery-grid{grid-template-columns:repeat(4,1fr);gap:24px;}
+    .nav-links{display:flex;}
+    .burger{display:none;}
+    .nav-actions .btn .short{display:none;}
+    .nav-actions .btn .full{display:inline;}
+    .g-media{height:170px;aspect-ratio:auto;}
+    .stat-box b{font-size:22px;}
+  }
+
+  /* --- GRAND ÉCRAN (≥ 1440px) --- */
+  @media(min-width:1440px){
+    .page-hero h1{font-size:42px;}
+  }
+
+  /* ===== MENU MOBILE (en dessous de 1024px) ===== */
+  @media(max-width:1023px){
+    .nav-links{
+      position:fixed;
+      top:0;
+      right:-280px;
+      width:260px;
+      height:100vh;
+      background:var(--navy-2);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:80px 24px 24px;
+      gap:18px;
+      transition:right .3s ease;
+      box-shadow:-8px 0 24px rgba(0,0,0,.3);
+      z-index:55;
+      overflow-y:auto;
+    }
+    .nav-links.open{right:0;}
+    .nav-links a{font-size:14px;color:#fff;}
+    .burger{display:flex;}
+    .nav-actions .btn .full{display:none;}
+    .nav-actions .btn .short{display:inline;}
+  }
+
+  /* --- TRÈS PETIT MOBILE (< 370px) --- */
+  @media(max-width:369px){
+    .wrap{padding:0 12px;}
+    .page-hero h1{font-size:22px;}
+    .logo-mark{font-size:16px;}
+    .logo-sub{font-size:6px;}
+    .nav-actions .btn{font-size:9px;padding:6px 10px;}
+    .hero-stats-row{gap:8px;}
+    .stat-box{gap:6px;}
+    .stat-box b{font-size:14px;}
+    .stat-box span{font-size:9px;}
+    .stat-ico{width:28px;height:28px;}
+    .stat-ico svg{width:14px;height:14px;}
+    .filter-chip{font-size:9px;padding:6px 10px;}
+    .filter-chip svg{width:10px;height:10px;}
+    .sort-select{font-size:10px;padding:6px 10px;}
+    .g-body h3{font-size:12px;}
+    .g-body{padding:10px 12px 12px;}
+    .cta-left h3{font-size:13px;}
+    .cta-mid{font-size:12px;}
+    .foot-grid{gap:18px;}
+    .foot-bottom{font-size:9px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><span class="ng">NG</span> SERVICE</div>
+      <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">ACCUEIL</a>
+      <a href="services.html">NOS SERVICES</a>
+      <a href="realisations.html" class="active">RÉALISATIONS</a>
+      <a href="apropos.html">À PROPOS</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="devis.html" class="btn btn-red">
+        <span>✎</span>
+        <span class="full">DEMANDER UN DEVIS</span>
+        <span class="short">DEVIS</span>
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="bar-accent"></div>
+    <h1>NOS RÉALISATIONS</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a><span class="sep">›</span><span class="current">Réalisations</span>
+    </div>
+    <p>Découvrez en images quelques-unes de nos interventions et le niveau d'exigence que nous mettons dans chaque mission.</p>
+
+    <div class="hero-stats-row">
+      <div class="stat-box">
+        <div class="stat-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 16l5-4 4 3 3-3 4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><b>120+</b><span>Interventions réalisées</span></div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-ico blue"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><b>80+</b><span>Clients satisfaits</span></div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M8 4h8v3a4 4 0 01-8 0V4z"/><path d="M8 5H4v1a4 4 0 004 4M16 5h4v1a4 4 0 01-4 4M12 12v4M9 20h6M10 16h4v4h-4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><b>100%</b><span>Engagement qualité</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="filter-bar">
+  <div class="wrap filter-row">
+    <div class="filters" id="filters">
+      <span class="filter-chip active" data-filter="all"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>TOUTES</span>
+      <span class="filter-chip" data-filter="bureaux"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M9 21v-4h6v4M9 8h.01M15 8h.01M9 12h.01M15 12h.01" stroke-linecap="round"/></svg>BUREAUX</span>
+      <span class="filter-chip" data-filter="residentiel"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7M6 10v10h12V10" stroke-linecap="round" stroke-linejoin="round"/></svg>RÉSIDENTIEL</span>
+      <span class="filter-chip" data-filter="travaux"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 20V9l6-5 6 5v11" stroke-linecap="round" stroke-linejoin="round"/></svg>TRAVAUX</span>
+      <span class="filter-chip" data-filter="industriel"><svg viewBox="0 0 24 24"><path d="M3 21V10l5 3V10l5 3v-3l5 3v8H3z" stroke-linecap="round" stroke-linejoin="round"/></svg>INDUSTRIEL</span>
+    </div>
+    <select class="sort-select">
+      <option>Les plus récentes</option>
+      <option>Les plus anciennes</option>
+    </select>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="gallery-grid" id="galleryGrid">
+
+      <a href="#" class="g-card-link" data-cat="bureaux">
+        <article class="g-card">
+          <div class="g-media">
+            <span class="cat-tag">BUREAUX</span>
+            <span class="after-tag">APRÈS</span>
+            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <img class="ba-left" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <span class="before-lbl">AVANT</span>
+            <div class="ba-handle">⇔</div>
+          </div>
+          <div class="g-body">
+            <h3>Nettoyage bureaux – Immeuble Alpha</h3>
+            <div class="g-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18" stroke-linecap="round"/></svg>12 Mai 2024</div>
+          </div>
+        </article>
+      </a>
+
+      <a href="#" class="g-card-link" data-cat="residentiel">
+        <article class="g-card">
+          <div class="g-media">
+            <span class="cat-tag residentiel">RÉSIDENTIEL</span>
+            <span class="after-tag">APRÈS</span>
+            <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <img class="ba-left" src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <span class="before-lbl">AVANT</span>
+            <div class="ba-handle">⇔</div>
+          </div>
+          <div class="g-body">
+            <h3>Nettoyage maison – Quartier Loandjili</h3>
+            <div class="g-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18" stroke-linecap="round"/></svg>05 Mai 2024</div>
+          </div>
+        </article>
+      </a>
+
+      <a href="#" class="g-card-link" data-cat="travaux">
+        <article class="g-card">
+          <div class="g-media">
+            <span class="cat-tag travaux">APRÈS TRAVAUX</span>
+            <span class="after-tag">APRÈS</span>
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <img class="ba-left" src="https://images.unsplash.com/photo-1580901368919-7738efb0f87e?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <span class="before-lbl">AVANT</span>
+            <div class="ba-handle">⇔</div>
+          </div>
+          <div class="g-body">
+            <h3>Remise en état après travaux – Centre-ville</h3>
+            <div class="g-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18" stroke-linecap="round"/></svg>28 Avril 2024</div>
+          </div>
+        </article>
+      </a>
+
+      <a href="#" class="g-card-link" data-cat="bureaux">
+        <article class="g-card">
+          <div class="g-media">
+            <span class="cat-tag">BUREAUX</span>
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <div class="play-overlay"><span>▶</span></div>
+          </div>
+          <div class="g-body">
+            <h3>Nettoyage extérieur – Siège social</h3>
+            <div class="g-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18" stroke-linecap="round"/></svg>20 Avril 2024</div>
+          </div>
+        </article>
+      </a>
+
+      <a href="#" class="g-card-link" data-cat="industriel">
+        <article class="g-card">
+          <div class="g-media">
+            <span class="cat-tag industriel">INDUSTRIEL</span>
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <div class="play-overlay"><span>▶</span></div>
+          </div>
+          <div class="g-body">
+            <h3>Entretien entrepôt – Port autonome</h3>
+            <div class="g-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18" stroke-linecap="round"/></svg>15 Avril 2024</div>
+          </div>
+        </article>
+      </a>
+
+      <a href="#" class="g-card-link" data-cat="residentiel">
+        <article class="g-card">
+          <div class="g-media">
+            <span class="cat-tag residentiel">RÉSIDENTIEL</span>
+            <span class="after-tag">APRÈS</span>
+            <img src="https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <img class="ba-left" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <span class="before-lbl">AVANT</span>
+            <div class="ba-handle">⇔</div>
+          </div>
+          <div class="g-body">
+            <h3>Nettoyage fin de bail – Appartement F4</h3>
+            <div class="g-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18" stroke-linecap="round"/></svg>10 Avril 2024</div>
+          </div>
+        </article>
+      </a>
+
+      <a href="#" class="g-card-link" data-cat="bureaux">
+        <article class="g-card">
+          <div class="g-media">
+            <span class="cat-tag">BUREAUX</span>
+            <span class="after-tag">APRÈS</span>
+            <img src="https://images.unsplash.com/photo-1585421514738-01798e348b17?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <img class="ba-left" src="https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <span class="before-lbl">AVANT</span>
+            <div class="ba-handle">⇔</div>
+          </div>
+          <div class="g-body">
+            <h3>Entretien clinique – Sainte Marie</h3>
+            <div class="g-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18" stroke-linecap="round"/></svg>02 Avril 2024</div>
+          </div>
+        </article>
+      </a>
+
+      <a href="#" class="g-card-link" data-cat="industriel">
+        <article class="g-card">
+          <div class="g-media">
+            <span class="cat-tag industriel">INDUSTRIEL</span>
+            <img src="https://images.unsplash.com/photo-1580982327559-c1202864eb05?q=80&w=500&auto=format&fit=crop" alt="" loading="lazy">
+            <div class="play-overlay"><span>▶</span></div>
+          </div>
+          <div class="g-body">
+            <h3>Nettoyage cuisine industrielle</h3>
+            <div class="g-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18" stroke-linecap="round"/></svg>25 Mars 2024</div>
+          </div>
+        </article>
+      </a>
+
+    </div>
+
+    <div class="load-more">
+      <a href="#" class="btn btn-outline-navy" id="loadMoreBtn">VOIR PLUS DE RÉALISATIONS →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="diag-l"></div>
+  <div class="diag-r"></div>
+  <div class="bg-img"></div>
+  <div class="wrap cta-inner">
+    <div class="cta-left">
+      <div class="cta-ico"><svg viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0116 0v3M2 15a2 2 0 012-2h1a1 1 0 011 1v4a1 1 0 01-1 1H4a2 2 0 01-2-2v-2zM22 15a2 2 0 00-2-2h-1a1 1 0 00-1 1v4a1 1 0 001 1h1a2 2 0 002-2v-2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>Besoin d'un service<br>de nettoyage professionnel ?</h3>
+    </div>
+    <div class="cta-mid"><b>Notre équipe est à votre écoute</b>pour vous proposer la meilleure solution.</div>
+    <a href="devis.html" class="btn btn-blue">DEMANDER UN DEVIS →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-col">
+      <div class="foot-logo">
+        <a href="index.html" class="logo-mark"><span class="ng">NG</span> SERVICE</a>
+        <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+      </div>
+      <p style="color:#aab0c2;line-height:1.7;font-size:12px;max-width:260px;">NG SERVICE est une entreprise spécialisée dans le nettoyage professionnel. Nous intervenons pour les entreprises et les particuliers avec rigueur et efficacité.</p>
+      <div class="foot-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>LIENS RAPIDES</h5>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="services.html">Nos services</a></li>
+        <li class="active-link"><a href="realisations.html">Réalisations</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>NOS SERVICES</h5>
+      <ul>
+        <li class="check">Nettoyage professionnel</li>
+        <li class="check">Nettoyage de bureaux</li>
+        <li class="check">Nettoyage résidentiel</li>
+        <li class="check">Nettoyage après travaux</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>NOS COORDONNÉES</h5>
+      <ul class="foot-contact">
+        <li>📞 <span>+242 06 123 45 67<br>+242 05 987 65 43</span></li>
+        <li>✉️ <span>contact@ngservice.cg</span></li>
+        <li>📍 <span>123, Avenue de la Propreté<br>Pointe-Noire, Congo</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    © 2024 NG SERVICE - Tous droits réservés.
+  </div>
+</footer>
+
+<script>
+  // Menu mobile
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  }
+
+  // Filtrage de la galerie
+  const chips = document.querySelectorAll('.filter-chip');
+  const cards = document.querySelectorAll('#galleryGrid .g-card-link');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  // Slider avant/après au survol / toucher
+  document.querySelectorAll('.g-media').forEach(media => {
+    const left = media.querySelector('.ba-left');
+    if (!left) return;
+    const setPos = (x) => {
+      const rect = media.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.max(0, Math.min(100, pct));
+      left.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      const handle = media.querySelector('.ba-handle');
+      if (handle) handle.style.left = pct + '%';
+    };
+    media.addEventListener('mousemove', e => setPos(e.clientX));
+    media.addEventListener('touchmove', e => {
+      e.preventDefault();
+      setPos(e.touches[0].clientX);
+    });
+  });
+</script>
+</body>
+</html>

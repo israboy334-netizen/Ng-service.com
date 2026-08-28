@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — NG SERVICE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E4222A;
+    --red-dark:#C41A21;
+    --navy:#0C1526;
+    --navy-2:#101B33;
+    --blue:#1F4E9C;
+    --ink:#131A2A;
+    --gray:#5C6478;
+    --gray-light:#8992A3;
+    --line:#E7E9EF;
+    --bg-soft:#F6F7FA;
+    --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Montserrat',Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;height:auto;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 16px;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 16px;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    border-radius:5px;
+    border:2px solid transparent;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .2s;
+  }
+  .btn-red{background:var(--red);color:#fff;}
+  .btn-red:hover{background:var(--red-dark);}
+
+  /* ===== HEADER ===== */
+  header{background:var(--navy);position:relative;z-index:50;}
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 0;
+    gap:8px;
+    flex-wrap:nowrap;
+  }
+  .logo{
+    display:flex;
+    flex-direction:column;
+    flex-shrink:0;
+  }
+  .logo-mark{
+    font-size:20px;
+    font-weight:900;
+    color:#fff;
+    letter-spacing:0.5px;
+    line-height:1;
+  }
+  .logo-mark .ng{color:var(--red);}
+  .logo-sub{
+    font-size:7px;
+    letter-spacing:1.2px;
+    color:#cfd4e0;
+    margin-top:2px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .nav-links a{
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.4px;
+    padding-bottom:4px;
+    border-bottom:2px solid transparent;
+    transition:border-color .2s;
+    white-space:nowrap;
+  }
+  .nav-links a.active{color:var(--red);border-color:var(--red);}
+  .nav-links a:hover{border-color:var(--red);}
+  .nav-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+  }
+  .nav-phone{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    padding-right:10px;
+    border-right:1px solid rgba(255,255,255,.2);
+  }
+  .nav-phone svg{
+    width:14px;
+    height:14px;
+    stroke:var(--red);
+    fill:none;
+    stroke-width:1.8;
+    flex-shrink:0;
+  }
+  .nav-phone .num{display:inline;}
+  .nav-phone .num-short{display:none;}
+  .nav-actions .btn{
+    font-size:10px;
+    padding:8px 12px;
+  }
+  .nav-actions .btn .full{display:inline;}
+  .nav-actions .btn .short{display:none;}
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:4px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:4px;
+    flex-shrink:0;
+  }
+  .burger span{
+    width:22px;
+    height:2px;
+    background:#fff;
+    display:block;
+    border-radius:1px;
+  }
+
+  /* ===== HERO ===== */
+  .contact-hero{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(100deg, rgba(6,10,20,.96) 0%, rgba(6,10,20,.86) 40%, rgba(6,10,20,.55) 100%),
+      url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    padding:30px 0 28px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    align-items:center;
+  }
+  .eyebrow{
+    color:var(--red);
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    display:block;
+  }
+  .contact-hero h1{
+    color:#fff;
+    font-size:26px;
+    font-weight:900;
+    line-height:1.15;
+    margin-bottom:6px;
+  }
+  .contact-hero h1 .red{color:var(--red);}
+  .bar-accent{width:44px;height:3px;background:var(--red);margin:10px 0 14px;}
+  .contact-hero p{
+    color:#c3c8d8;
+    font-size:13px;
+    line-height:1.7;
+    max-width:440px;
+  }
+
+  .hero-right{
+    position:relative;
+    display:flex;
+    flex-direction:column-reverse;
+    gap:14px;
+  }
+  .hero-photo{
+    border-radius:8px;
+    overflow:hidden;
+    position:relative;
+    height:200px;
+    width:100%;
+  }
+  .hero-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .hero-card{
+    position:static;
+    width:100%;
+    background:var(--navy-2);
+    border-radius:8px;
+    padding:14px 16px;
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+    z-index:5;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4px 16px;
+  }
+  .hc-item{
+    display:flex;
+    gap:10px;
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .hc-item:nth-child(3),
+  .hc-item:nth-child(4){border-bottom:none;}
+  .hc-ico{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:var(--blue);
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hc-ico svg{
+    width:14px;
+    height:14px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:1.8;
+  }
+  .hc-item h5{
+    color:#fff;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.2px;
+    margin-bottom:2px;
+  }
+  .hc-item p{
+    color:#a9afc0;
+    font-size:9.5px;
+    line-height:1.4;
+  }
+
+  /* ===== MAIN CONTACT SECTION ===== */
+  .contact-main{padding:40px 0 50px;}
+  .contact-cols{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .col-title{
+    font-size:15px;
+    font-weight:800;
+    color:var(--navy);
+    margin-bottom:12px;
+  }
+  .col-title .red{color:var(--red);}
+  .col-line{width:32px;height:3px;background:var(--red);margin:-6px 0 16px;}
+
+  .info-item{
+    display:flex;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .info-ico{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    border:1.5px solid var(--line);
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .info-ico svg{
+    width:16px;
+    height:16px;
+    stroke:var(--red);
+    fill:none;
+    stroke-width:1.7;
+  }
+  .info-item h4{
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:3px;
+  }
+  .info-item p{
+    font-size:12px;
+    color:var(--gray);
+    line-height:1.6;
+  }
+
+  /* form */
+  .form-row{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .form-field{flex:1;display:flex;flex-direction:column;}
+  .form-field.full{width:100%;}
+  input, select, textarea{
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:11px 14px;
+    font-family:inherit;
+    font-size:12px;
+    color:var(--ink);
+    outline:none;
+    background:#fff;
+    width:100%;
+  }
+  input:focus, select:focus, textarea:focus{border-color:var(--blue);}
+  textarea{resize:vertical;min-height:90px;}
+  .req{color:var(--red);}
+  .form-field.full{margin-bottom:0;}
+  .consent{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    font-size:11px;
+    color:var(--gray);
+    margin:14px 0 16px;
+  }
+  .consent input{
+    width:16px;
+    height:16px;
+    margin-top:1px;
+    accent-color:var(--red);
+    flex-shrink:0;
+  }
+  .submit-btn{
+    width:100%;
+    background:var(--red);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    padding:14px;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    cursor:pointer;
+  }
+  .submit-btn:hover{background:var(--red-dark);}
+  .submit-btn svg{width:16px;height:16px;fill:#fff;}
+
+  /* why contact */
+  .why-item{
+    display:flex;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .why-ico{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--blue);
+  }
+  .why-ico.red{background:var(--red);}
+  .why-ico svg{
+    width:16px;
+    height:16px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:1.7;
+  }
+  .why-item h4{
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:3px;
+  }
+  .why-item p{
+    font-size:11.5px;
+    color:var(--gray);
+    line-height:1.6;
+  }
+
+  /* map */
+  .map-section{
+    position:relative;
+    background:#dfe6ee;
+    height:180px;
+    overflow:hidden;
+  }
+  .map-section img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .map-pin{
+    position:absolute;
+    left:12%;
+    top:18%;
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    flex-direction:column;
+  }
+  .pin-ico{
+    width:32px;
+    height:32px;
+    border-radius:50% 50% 50% 0;
+    background:var(--red);
+    transform:rotate(-45deg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    box-shadow:0 6px 14px rgba(0,0,0,.3);
+  }
+  .pin-ico svg{
+    width:14px;
+    height:14px;
+    fill:#fff;
+    transform:rotate(45deg);
+  }
+  .pin-card{
+    background:#fff;
+    border-radius:6px;
+    padding:10px 14px;
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
+    min-width:160px;
+  }
+  .pin-card h5{
+    font-size:12px;
+    font-weight:800;
+    color:var(--navy);
+    margin-bottom:2px;
+  }
+  .pin-card p{
+    font-size:10.5px;
+    color:var(--gray);
+    line-height:1.4;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy);color:#c3c8d8;padding:36px 0 0;font-size:12px;}
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .foot-logo{display:flex;flex-direction:column;margin-bottom:10px;}
+  .foot-logo .logo-mark{font-size:20px;}
+  .foot-col h5{
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.6px;
+    margin-bottom:12px;
+  }
+  .foot-col ul li{
+    margin-bottom:8px;
+    color:#aab0c2;
+    font-size:12px;
+  }
+  .foot-col ul li a:hover{color:#fff;}
+  .foot-col ul li.active-link a{color:var(--red);}
+  .foot-col ul li.check{display:flex;align-items:center;gap:6px;}
+  .foot-col ul li.check::before{content:'✓';color:#4C8DFF;font-size:10px;font-weight:800;}
+  .foot-contact li{
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
+    color:#aab0c2;
+    line-height:1.5;
+    font-size:12px;
+  }
+  .foot-social{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+  }
+  .foot-social a{
+    width:28px;
+    height:28px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    transition:all .2s;
+  }
+  .foot-social a:hover{background:var(--red);border-color:var(--red);}
+  .foot-bottom{
+    background:var(--blue);
+    text-align:center;
+    padding:12px 0;
+    font-size:10px;
+    color:#fff;
+  }
+
+  /* ============================================================ */
+  /* ====== BREAKPOINTS ====== */
+  /* ============================================================ */
+
+  /* --- PETIT MOBILE (≥ 380px) --- */
+  @media(min-width:380px){
+    .wrap{padding:0 18px;}
+    .logo-mark{font-size:22px;}
+    .logo-sub{font-size:8px;}
+    .contact-hero h1{font-size:28px;}
+    .nav-actions .btn{font-size:11px;padding:8px 14px;}
+  }
+
+  /* --- MOBILE / TABLETTE (≥ 600px) --- */
+  @media(min-width:600px){
+    .wrap{padding:0 24px;}
+    .contact-hero{padding:36px 0 32px;}
+    .contact-hero h1{font-size:30px;}
+    .hero-photo{height:240px;}
+    .hero-card{
+      grid-template-columns:1fr 1fr;
+      padding:16px 20px;
+    }
+    .hc-item{padding:10px 0;}
+    .hc-item h5{font-size:11px;}
+    .hc-item p{font-size:10px;}
+    .form-row{flex-direction:row;gap:14px;}
+    .contact-cols{grid-template-columns:1fr 1fr;gap:30px;}
+    .contact-cols .col-why{grid-column:1/-1;}
+    .foot-grid{grid-template-columns:repeat(2,1fr);}
+    .map-pin{left:18%;top:22%;flex-direction:row;}
+  }
+
+  /* --- TABLETTE LARGE (≥ 768px) --- */
+  @media(min-width:768px){
+    .contact-hero{padding:44px 0 36px;}
+    .contact-hero h1{font-size:32px;}
+    .hero-grid{grid-template-columns:1.05fr 1fr;gap:28px;}
+    .hero-right{flex-direction:column;}
+    .hero-photo{height:260px;}
+    .hero-card{
+      position:absolute;
+      left:0;
+      top:8%;
+      width:220px;
+      grid-template-columns:1fr;
+      padding:16px;
+      border-radius:8px;
+    }
+    .hc-item{border-bottom:1px solid rgba(255,255,255,.08);padding:10px 0;}
+    .hc-item:nth-child(3){border-bottom:1px solid rgba(255,255,255,.08);}
+    .hc-item:nth-child(4){border-bottom:none;}
+    .contact-cols{grid-template-columns:.8fr 1.3fr .9fr;gap:32px;}
+    .contact-cols .col-why{grid-column:auto;}
+    .foot-grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr;}
+    .map-pin{left:28%;top:30%;flex-direction:row;}
+    .pin-card{min-width:200px;}
+  }
+
+  /* --- DESKTOP (≥ 1024px) --- */
+  @media(min-width:1024px){
+    .wrap{padding:0 32px;}
+    .contact-hero{padding:50px 0 40px;}
+    .contact-hero h1{font-size:34px;}
+    .hero-grid{gap:34px;}
+    .hero-photo{height:290px;}
+    .hero-card{width:238px;padding:18px;}
+    .contact-main{padding:56px 0;}
+    .contact-cols{gap:40px;}
+    .nav-links{display:flex;}
+    .burger{display:none;}
+    .nav-actions .btn .short{display:none;}
+    .nav-actions .btn .full{display:inline;}
+    .nav-phone .num-short{display:none;}
+    .nav-phone .num{display:inline;}
+    .map-section{height:220px;}
+    .map-pin{left:38%;top:42%;}
+  }
+
+  /* --- GRAND ÉCRAN (≥ 1440px) --- */
+  @media(min-width:1440px){
+    .contact-hero h1{font-size:38px;}
+  }
+
+  /* ===== MENU MOBILE (en dessous de 1024px) ===== */
+  @media(max-width:1023px){
+    .nav-links{
+      position:fixed;
+      top:0;
+      right:-280px;
+      width:260px;
+      height:100vh;
+      background:var(--navy-2);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:80px 24px 24px;
+      gap:18px;
+      transition:right .3s ease;
+      box-shadow:-8px 0 24px rgba(0,0,0,.3);
+      z-index:55;
+      overflow-y:auto;
+    }
+    .nav-links.open{right:0;}
+    .nav-links a{font-size:14px;color:#fff;}
+    .burger{display:flex;}
+    .nav-actions .btn .full{display:none;}
+    .nav-actions .btn .short{display:inline;}
+    .nav-phone .num{display:none;}
+    .nav-phone .num-short{display:inline;}
+  }
+
+  /* --- TRÈS PETIT MOBILE (< 370px) --- */
+  @media(max-width:369px){
+    .wrap{padding:0 12px;}
+    .logo-mark{font-size:16px;}
+    .logo-sub{font-size:6px;}
+    .nav-phone{font-size:9px;padding-right:6px;}
+    .nav-phone svg{width:12px;height:12px;}
+    .nav-actions .btn{font-size:8px;padding:6px 8px;gap:4px;}
+    .contact-hero h1{font-size:22px;}
+    .contact-hero p{font-size:12px;}
+    .hero-photo{height:160px;}
+    .hero-card{padding:10px 12px;}
+    .hc-item{gap:8px;padding:6px 0;}
+    .hc-ico{width:26px;height:26px;}
+    .hc-ico svg{width:12px;height:12px;}
+    .hc-item h5{font-size:9px;}
+    .hc-item p{font-size:8.5px;}
+    .col-title{font-size:14px;}
+    input, select, textarea{font-size:11px;padding:9px 12px;}
+    .submit-btn{font-size:11px;padding:12px;}
+    .info-item{gap:10px;margin-bottom:14px;}
+    .info-ico{width:32px;height:32px;}
+    .info-ico svg{width:14px;height:14px;}
+    .why-item{gap:10px;margin-bottom:14px;}
+    .why-ico{width:32px;height:32px;}
+    .why-ico svg{width:14px;height:14px;}
+    .map-section{height:140px;}
+    .pin-card{min-width:130px;padding:8px 12px;}
+    .pin-card h5{font-size:11px;}
+    .pin-card p{font-size:9.5px;}
+    .pin-ico{width:28px;height:28px;}
+    .pin-ico svg{width:12px;height:12px;}
+    .foot-grid{gap:18px;}
+    .foot-bottom{font-size:9px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><span class="ng">NG</span> SERVICE</div>
+      <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">ACCUEIL</a>
+      <a href="services.html">SERVICES</a>
+      <a href="realisations.html">RÉALISATIONS</a>
+      <a href="apropos.html">À PROPOS</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="tel:+242061234567" class="nav-phone">
+        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.8 2.1z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="num">+242 06 123 45 67</span>
+        <span class="num-short">Appeler</span>
+      </a>
+      <a href="devis.html" class="btn btn-red">
+        <span>✎</span>
+        <span class="full">DEMANDER UN DEVIS</span>
+        <span class="short">DEVIS</span>
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="contact-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">CONTACTEZ-NOUS</span>
+      <h1>NOUS SOMMES<br><span class="red">À VOTRE ÉCOUTE</span></h1>
+      <div class="bar-accent"></div>
+      <p>Besoin d'un service de nettoyage professionnel ? Notre équipe est disponible pour répondre à toutes vos questions et vous proposer la meilleure solution.</p>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hc-item">
+          <div class="hc-ico"><svg viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0116 0v3M3 15a1.5 1.5 0 011.5-1.5h1A1.5 1.5 0 017 15v3a1.5 1.5 0 01-1.5 1.5h-1A1.5 1.5 0 013 18v-3zM21 15a1.5 1.5 0 00-1.5-1.5h-1A1.5 1.5 0 0017 15v3a1.5 1.5 0 001.5 1.5h1a1.5 1.5 0 001.5-1.5v-3z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h5>ÉCOUTE ACTIVE</h5>
+            <p>Nous vous écoutons pour comprendre vos besoins.</p>
+          </div>
+        </div>
+        <div class="hc-item">
+          <div class="hc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+          <div>
+            <h5>RÉPONSE RAPIDE</h5>
+            <p>Nous vous répondons dans les meilleurs délais.</p>
+          </div>
+        </div>
+        <div class="hc-item">
+          <div class="hc-ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h5>SERVICE FIABLE</h5>
+            <p>Des solutions fiables et adaptées à vos besoins.</p>
+          </div>
+        </div>
+        <div class="hc-item">
+          <div class="hc-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6M17 8a3 3 0 100-6M22 20c0-3-2-5-4-5.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h5>SATISFACTION CLIENT</h5>
+            <p>Votre satisfaction est notre priorité absolue.</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=900&auto=format&fit=crop" alt="Conseillère NG SERVICE" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-main">
+  <div class="wrap contact-cols">
+
+    <div class="col-coord">
+      <h3 class="col-title">NOS <span class="red">COORDONNÉES</span></h3>
+      <div class="col-line"></div>
+
+      <div class="info-item">
+        <div class="info-ico"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.8 2.1z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Téléphone</h4>
+          <p>+242 06 123 45 67<br>+242 05 987 65 43</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Email</h4>
+          <p>contact@ngservice.cg</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <div>
+          <h4>Adresse</h4>
+          <p>123, Avenue de la Propreté<br>Pointe-Noire, Congo</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+        <div>
+          <h4>Horaires d'ouverture</h4>
+          <p>Lundi - Samedi : 07h00 - 18h00<br>Dimanche : Fermé</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-form">
+      <h3 class="col-title">ENVOYEZ-NOUS UN <span class="red">MESSAGE</span></h3>
+      <div class="col-line"></div>
+
+      <form id="contactForm" action="#" method="post">
+        <div class="form-row">
+          <div class="form-field"><input type="text" name="nom" placeholder="Nom complet *" required></div>
+          <div class="form-field"><input type="tel" name="telephone" placeholder="Téléphone *" required></div>
+        </div>
+        <div class="form-field full"><input type="email" name="email" placeholder="Email *" required></div>
+        <div class="form-field full">
+          <select name="sujet" required>
+            <option value="" selected disabled>Sujet * — Sélectionnez un sujet</option>
+            <option value="devis">Demande de devis</option>
+            <option value="info">Demande d'information</option>
+            <option value="reclamation">Réclamation</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-field full"><textarea name="message" placeholder="Votre message *" required></textarea></div>
+
+        <label class="consent">
+          <input type="checkbox" required>
+          J'accepte d'être recontacté(e) par NG SERVICE.
+        </label>
+
+        <button type="submit" class="submit-btn">ENVOYER LE MESSAGE <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></button>
+      </form>
+    </div>
+
+    <div class="col-why">
+      <h3 class="col-title">POURQUOI NOUS <span class="red">CONTACTER ?</span></h3>
+      <div class="col-line"></div>
+
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M9 3h6l1 3H8l1-3zM6 6h12l1 15H5L6 6z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Devis gratuit</h4>
+          <p>Recevez un devis personnalisé et gratuit selon vos besoins.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-ico red"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18" stroke-linecap="round"/></svg></div>
+        <div>
+          <h4>Intervention rapide</h4>
+          <p>Nous intervenons rapidement pour garantir la propreté de vos espaces.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1.5 11a2 2 0 01-2 1.7H7.5a2 2 0 01-2-1.7L4 8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" stroke-linecap="round"/></svg></div>
+        <div>
+          <h4>Solutions sur mesure</h4>
+          <p>Des prestations adaptées à vos exigences et à votre budget.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-ico red"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.8 2.1z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Support à votre écoute</h4>
+          <p>Notre équipe est disponible pour vous accompagner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-section">
+  <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1600&auto=format&fit=crop" alt="Carte de localisation NG SERVICE" loading="lazy">
+  <div class="map-pin">
+    <div class="pin-ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/></svg></div>
+    <div class="pin-card">
+      <h5>NG SERVICE</h5>
+      <p>123, Avenue de la Propreté<br>Pointe-Noire, Congo</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-col">
+      <div class="foot-logo">
+        <a href="index.html" class="logo-mark"><span class="ng">NG</span> SERVICE</a>
+        <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+      </div>
+      <p style="color:#aab0c2;line-height:1.7;font-size:12px;max-width:260px;">NG SERVICE est une entreprise spécialisée dans le nettoyage professionnel. Nous intervenons pour les entreprises, les particuliers et les institutions.</p>
+      <div class="foot-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>LIENS RAPIDES</h5>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="services.html">Nos services</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li class="active-link"><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>NOS SERVICES</h5>
+      <ul>
+        <li class="check">Nettoyage professionnel</li>
+        <li class="check">Nettoyage de bureaux</li>
+        <li class="check">Nettoyage résidentiel</li>
+        <li class="check">Nettoyage après travaux</li>
+        <li class="check">Nettoyage extérieur</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>COORDONNÉES</h5>
+      <ul class="foot-contact">
+        <li>📞 <span>+242 06 123 45 67<br>+242 05 987 65 43</span></li>
+        <li>✉️ <span>contact@ngservice.cg</span></li>
+        <li>📍 <span>123, Avenue de la Propreté<br>Pointe-Noire, Congo</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2024 NG SERVICE - Tous droits réservés.</div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  }
+
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Merci pour votre message ! Notre équipe vous recontactera rapidement.');
+    this.reset();
+  });
+</script>
+</body>
+</html>

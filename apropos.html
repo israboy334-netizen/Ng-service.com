@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — NG SERVICE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E4222A;
+    --red-dark:#C41A21;
+    --navy:#0C1526;
+    --navy-2:#101B33;
+    --blue:#1F4E9C;
+    --ink:#131A2A;
+    --gray:#5C6478;
+    --gray-light:#8992A3;
+    --line:#E7E9EF;
+    --bg-soft:#F6F7FA;
+    --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Montserrat',Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;height:auto;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 16px;}
+  .eyebrow{
+    color:var(--red);
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    display:block;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 16px;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    border-radius:5px;
+    border:2px solid transparent;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .2s;
+  }
+  .btn-red{background:var(--red);color:#fff;}
+  .btn-red:hover{background:var(--red-dark);}
+  .btn-outline-navy{border-color:var(--navy);color:var(--navy);background:transparent;}
+  .btn-outline-navy:hover{background:var(--navy);color:#fff;}
+
+  /* ===== HEADER ===== */
+  header{background:var(--navy);position:relative;z-index:50;}
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 0;
+    gap:8px;
+    flex-wrap:nowrap;
+  }
+  .logo{
+    display:flex;
+    flex-direction:column;
+    flex-shrink:0;
+  }
+  .logo-mark{
+    font-size:20px;
+    font-weight:900;
+    color:#fff;
+    letter-spacing:0.5px;
+    line-height:1;
+  }
+  .logo-mark .ng{color:var(--red);}
+  .logo-sub{
+    font-size:7px;
+    letter-spacing:1.2px;
+    color:#cfd4e0;
+    margin-top:2px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .nav-links a{
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.4px;
+    padding-bottom:4px;
+    border-bottom:2px solid transparent;
+    transition:border-color .2s;
+    white-space:nowrap;
+  }
+  .nav-links a.active{color:var(--red);border-color:var(--red);}
+  .nav-links a:hover{border-color:var(--red);}
+  .nav-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+  }
+  .nav-phone{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    padding-right:10px;
+    border-right:1px solid rgba(255,255,255,.2);
+  }
+  .nav-phone svg{
+    width:14px;
+    height:14px;
+    stroke:var(--red);
+    fill:none;
+    stroke-width:1.8;
+    flex-shrink:0;
+  }
+  .nav-phone .num{display:inline;}
+  .nav-phone .num-short{display:none;}
+  .nav-actions .btn{
+    font-size:10px;
+    padding:8px 12px;
+  }
+  .nav-actions .btn .full{display:inline;}
+  .nav-actions .btn .short{display:none;}
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:4px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:4px;
+    flex-shrink:0;
+  }
+  .burger span{
+    width:22px;
+    height:2px;
+    background:#fff;
+    display:block;
+    border-radius:1px;
+  }
+
+  /* ===== PAGE HERO ===== */
+  .about-hero{
+    position:relative;
+    background:linear-gradient(180deg, var(--navy) 0%, #0a1120 100%);
+    padding:20px 0 0;
+    overflow:hidden;
+  }
+  .breadcrumb{
+    color:#aab0c2;
+    font-size:11px;
+    font-weight:600;
+    margin-bottom:18px;
+  }
+  .breadcrumb a{color:#aab0c2;}
+  .breadcrumb a:hover{color:#fff;}
+  .breadcrumb span{color:var(--red);margin:0 4px;}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    align-items:center;
+  }
+  .about-content h1{
+    color:#fff;
+    font-size:28px;
+    font-weight:900;
+    line-height:1.18;
+    margin-bottom:14px;
+  }
+  .about-content h1 .red{color:var(--red);}
+  .bar-accent{width:44px;height:3px;background:var(--red);margin:0 0 14px;}
+  .about-content p{
+    color:#c3c8d8;
+    font-size:13px;
+    line-height:1.75;
+    max-width:100%;
+  }
+
+  .about-photo-frame{
+    position:relative;
+    border-radius:8px;
+    overflow:visible;
+  }
+  .about-photo-frame .photo{
+    height:200px;
+    border-radius:8px;
+    overflow:hidden;
+    width:100%;
+  }
+  .about-photo-frame .photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .exp-badge{
+    position:static;
+    width:100%;
+    background:var(--navy-2);
+    border-radius:8px;
+    padding:16px 18px;
+    margin-top:14px;
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+    z-index:5;
+  }
+  .exp-badge .num{
+    color:var(--red);
+    font-size:26px;
+    font-weight:900;
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .exp-badge b{
+    display:block;
+    color:#fff;
+    font-size:11.5px;
+    font-weight:800;
+    letter-spacing:.3px;
+    margin-bottom:6px;
+  }
+  .exp-badge span{
+    display:block;
+    color:#a9afc0;
+    font-size:10.5px;
+    line-height:1.5;
+  }
+  .exp-badge .mini-bar{width:24px;height:2px;background:var(--red);margin-top:8px;}
+
+  .trust-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px 20px;
+    margin-top:40px;
+    padding:20px 0;
+    border-top:1px solid rgba(255,255,255,.12);
+  }
+  .trust-item{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .trust-ico{
+    width:28px;
+    height:28px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .trust-ico svg{
+    width:24px;
+    height:24px;
+    stroke:var(--red);
+    fill:none;
+    stroke-width:1.6;
+  }
+  .trust-item h5{
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.3px;
+    margin-bottom:2px;
+  }
+  .trust-item p{
+    color:#a9afc0;
+    font-size:10px;
+    line-height:1.5;
+  }
+
+  /* ===== COMPANY / STATS ===== */
+  .company{padding:60px 0 40px;}
+  .company-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .company-text h2{
+    font-size:24px;
+    font-weight:800;
+    color:var(--navy);
+    line-height:1.3;
+    margin-bottom:12px;
+  }
+  .company-text h2 .blue{color:var(--blue);}
+  .company-text p{
+    color:var(--gray);
+    font-size:13px;
+    line-height:1.75;
+    margin-bottom:12px;
+  }
+  .company-cta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:16px;
+  }
+
+  .stat-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .stat-card{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:18px 16px;
+    text-align:left;
+  }
+  .stat-ico2{
+    width:32px;
+    height:32px;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .stat-ico2 svg{
+    width:28px;
+    height:28px;
+    stroke:var(--red);
+    fill:none;
+    stroke-width:1.6;
+  }
+  .stat-ico2.blue svg{stroke:var(--blue);}
+  .stat-card .num{
+    font-size:24px;
+    font-weight:900;
+    color:var(--navy);
+    line-height:1;
+    margin-bottom:4px;
+  }
+  .stat-card .label{
+    font-size:11px;
+    color:var(--gray);
+    font-weight:600;
+    line-height:1.4;
+  }
+
+  /* ===== VIDEO + VALUES ===== */
+  .story{padding:10px 0 60px;}
+  .story-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .video-card{
+    position:relative;
+    border-radius:10px;
+    overflow:hidden;
+    height:220px;
+  }
+  .video-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .video-card::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(0deg, rgba(6,10,20,.75) 0%, rgba(6,10,20,.15) 45%, rgba(6,10,20,.05) 100%);
+  }
+  .video-play{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:rgba(255,255,255,.94);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    color:var(--navy);
+    z-index:2;
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+    cursor:pointer;
+  }
+  .video-caption{
+    position:absolute;
+    left:14px;
+    bottom:14px;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .video-caption .dot{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:10px;
+    flex-shrink:0;
+  }
+  .video-caption b{
+    display:block;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+  }
+  .video-caption span{
+    display:block;
+    color:#d6d9e3;
+    font-size:9.5px;
+  }
+
+  .values-head h2{
+    font-size:22px;
+    font-weight:800;
+    color:var(--navy);
+    line-height:1.3;
+    margin-bottom:20px;
+  }
+  .values-head h2 .blue{color:var(--blue);}
+  .values-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .value-item{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .value-ico{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--red);
+  }
+  .value-ico.blue{background:var(--blue);}
+  .value-ico svg{
+    width:16px;
+    height:16px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:1.9;
+  }
+  .value-item h4{
+    font-size:13px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:3px;
+  }
+  .value-item p{
+    font-size:11.5px;
+    color:var(--gray);
+    line-height:1.65;
+  }
+
+  /* ===== CTA BAND ===== */
+  .cta-band{background:var(--navy-2);padding:28px 0;}
+  .cta-flex{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .cta-left{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    max-width:100%;
+  }
+  .cta-left .ico{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--red);
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .cta-left .ico svg{
+    width:18px;
+    height:18px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:1.8;
+  }
+  .cta-left h4{
+    color:#fff;
+    font-size:13px;
+    font-weight:800;
+    line-height:1.4;
+    margin-bottom:4px;
+  }
+  .cta-left p{
+    color:#a9afc0;
+    font-size:11.5px;
+  }
+  .cta-mid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:12px;
+    width:100%;
+  }
+  .cta-mid-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:4px;
+    padding:10px 6px;
+    background:rgba(255,255,255,.04);
+    border-radius:6px;
+  }
+  .cta-mid-item .ico{
+    width:30px;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .cta-mid-item .ico svg{
+    width:20px;
+    height:20px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:1.6;
+  }
+  .cta-mid-item span{
+    color:#d6d9e3;
+    font-size:9.5px;
+    font-weight:600;
+    line-height:1.3;
+  }
+  .cta-right{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    width:100%;
+  }
+  .cta-right .btn{width:100%;justify-content:center;}
+  .cta-note{color:#8fa0c9;font-size:11px;font-style:italic;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy);color:#c3c8d8;padding:36px 0 0;font-size:12px;}
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .foot-logo{display:flex;flex-direction:column;margin-bottom:10px;}
+  .foot-logo .logo-mark{font-size:20px;}
+  .foot-col h5{
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.6px;
+    margin-bottom:12px;
+  }
+  .foot-col ul li{
+    margin-bottom:8px;
+    color:#aab0c2;
+    font-size:12px;
+  }
+  .foot-col ul li a:hover{color:#fff;}
+  .foot-col ul li.active-link a{color:var(--red);}
+  .foot-col ul li.check{display:flex;align-items:center;gap:6px;}
+  .foot-col ul li.check::before{content:'✓';color:#4C8DFF;font-size:10px;font-weight:800;}
+  .foot-contact li{
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
+    color:#aab0c2;
+    line-height:1.5;
+    font-size:12px;
+  }
+  .foot-social{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+  }
+  .foot-social a{
+    width:28px;
+    height:28px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    transition:all .2s;
+  }
+  .foot-social a:hover{background:var(--red);border-color:var(--red);}
+  .foot-bottom{
+    background:var(--blue);
+    text-align:center;
+    padding:12px 0;
+    font-size:10px;
+    color:#fff;
+    position:relative;
+  }
+  .foot-bottom .up{
+    display:none;
+  }
+
+  /* ============================================================ */
+  /* ====== BREAKPOINTS ====== */
+  /* ============================================================ */
+
+  /* --- PETIT MOBILE (≥ 380px) --- */
+  @media(min-width:380px){
+    .wrap{padding:0 18px;}
+    .logo-mark{font-size:22px;}
+    .logo-sub{font-size:8px;}
+    .about-content h1{font-size:30px;}
+    .nav-actions .btn{font-size:11px;padding:8px 14px;}
+  }
+
+  /* --- MOBILE / TABLETTE (≥ 600px) --- */
+  @media(min-width:600px){
+    .wrap{padding:0 24px;}
+    .about-hero{padding:24px 0 0;}
+    .about-content h1{font-size:32px;}
+    .about-photo-frame .photo{height:260px;}
+    .exp-badge{position:absolute;right:14px;bottom:-30px;width:220px;margin-top:0;}
+    .trust-row{grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px;padding:24px 0;}
+    .trust-item{flex-direction:column;align-items:center;text-align:center;}
+    .trust-ico{width:32px;height:32px;}
+    .trust-ico svg{width:28px;height:28px;}
+    .trust-item h5{font-size:12px;}
+    .trust-item p{font-size:10.5px;max-width:150px;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+    .stat-card{padding:22px 20px;}
+    .stat-card .num{font-size:28px;}
+    .stat-card .label{font-size:12px;}
+    .story-grid{gap:36px;}
+    .video-card{height:280px;}
+    .values-grid{grid-template-columns:repeat(2,1fr);gap:20px 24px;}
+    .cta-mid{grid-template-columns:repeat(3,1fr);}
+    .foot-grid{grid-template-columns:repeat(2,1fr);}
+    .cta-right .btn{width:auto;}
+  }
+
+  /* --- TABLETTE LARGE (≥ 768px) --- */
+  @media(min-width:768px){
+    .about-hero{padding:26px 0 0;}
+    .about-content h1{font-size:34px;}
+    .about-grid{grid-template-columns:.92fr 1.15fr;gap:32px;}
+    .about-photo-frame .photo{height:300px;border-radius:8px 0 0 8px;}
+    .exp-badge{right:calc((100vw - 1240px + 64px) / -2 + 20px);bottom:-36px;width:220px;}
+    .company-grid{grid-template-columns:1fr 1fr;gap:40px;}
+    .company{padding:76px 0 50px;}
+    .story-grid{grid-template-columns:1.05fr 1.2fr;gap:40px;}
+    .cta-flex{flex-direction:row;flex-wrap:wrap;}
+    .cta-left{max-width:340px;}
+    .cta-mid{width:auto;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .cta-right{width:auto;align-items:flex-end;}
+    .foot-grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr;}
+    .foot-bottom .up{display:flex;position:absolute;right:24px;top:50%;transform:translateY(-50%);width:24px;height:24px;background:var(--red);align-items:center;justify-content:center;font-size:10px;color:#fff;border-radius:3px;cursor:pointer;}
+  }
+
+  /* --- DESKTOP (≥ 1024px) --- */
+  @media(min-width:1024px){
+    .wrap{padding:0 32px;}
+    .about-content h1{font-size:38px;}
+    .about-grid{gap:40px;}
+    .about-photo-frame .photo{height:340px;}
+    .exp-badge{right:calc((100vw - 1240px + 64px) / -2 + 24px);bottom:-38px;width:230px;padding:20px 20px 18px;}
+    .exp-badge .num{font-size:30px;}
+    .exp-badge b{font-size:12.5px;}
+    .exp-badge span{font-size:11px;}
+    .trust-row{margin-top:78px;padding:26px 0;}
+    .company{padding:88px 0 60px;}
+    .company-text h2{font-size:28px;}
+    .company-text p{font-size:13.5px;}
+    .stat-card{padding:26px 20px;}
+    .stat-ico2{width:40px;height:40px;}
+    .stat-ico2 svg{width:34px;height:34px;}
+    .stat-card .num{font-size:32px;}
+    .story{padding:20px 0 90px;}
+    .video-card{height:340px;}
+    .video-play{width:56px;height:56px;font-size:16px;}
+    .values-head h2{font-size:26px;}
+    .values-grid{gap:28px 26px;}
+    .value-ico{width:44px;height:44px;}
+    .value-ico svg{width:19px;height:19px;}
+    .value-item h4{font-size:14px;}
+    .value-item p{font-size:12.3px;}
+    .cta-band{padding:34px 0;}
+    .cta-left h4{font-size:14.5px;}
+    .cta-mid-item span{font-size:11px;}
+    .nav-links{display:flex;}
+    .burger{display:none;}
+    .nav-actions .btn .short{display:none;}
+    .nav-actions .btn .full{display:inline;}
+    .nav-phone .num-short{display:none;}
+    .nav-phone .num{display:inline;}
+    .foot-bottom .up{right:32px;}
+  }
+
+  /* --- GRAND ÉCRAN (≥ 1440px) --- */
+  @media(min-width:1440px){
+    .about-content h1{font-size:42px;}
+  }
+
+  /* ===== MENU MOBILE (en dessous de 1024px) ===== */
+  @media(max-width:1023px){
+    .nav-links{
+      position:fixed;
+      top:0;
+      right:-280px;
+      width:260px;
+      height:100vh;
+      background:var(--navy-2);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:80px 24px 24px;
+      gap:18px;
+      transition:right .3s ease;
+      box-shadow:-8px 0 24px rgba(0,0,0,.3);
+      z-index:55;
+      overflow-y:auto;
+    }
+    .nav-links.open{right:0;}
+    .nav-links a{font-size:14px;color:#fff;}
+    .burger{display:flex;}
+    .nav-actions .btn .full{display:none;}
+    .nav-actions .btn .short{display:inline;}
+    .nav-phone .num{display:none;}
+    .nav-phone .num-short{display:inline;}
+  }
+
+  /* --- TRÈS PETIT MOBILE (< 370px) --- */
+  @media(max-width:369px){
+    .wrap{padding:0 12px;}
+    .logo-mark{font-size:16px;}
+    .logo-sub{font-size:6px;}
+    .nav-phone{font-size:9px;padding-right:6px;}
+    .nav-phone svg{width:12px;height:12px;}
+    .nav-actions .btn{font-size:8px;padding:6px 8px;gap:4px;}
+    .about-content h1{font-size:22px;}
+    .about-content p{font-size:12px;}
+    .about-photo-frame .photo{height:160px;}
+    .exp-badge{padding:12px 14px;}
+    .exp-badge .num{font-size:22px;}
+    .exp-badge b{font-size:10px;}
+    .exp-badge span{font-size:9.5px;}
+    .trust-row{grid-template-columns:1fr;gap:10px;}
+    .stat-grid{grid-template-columns:1fr;}
+    .stat-card .num{font-size:22px;}
+    .video-card{height:180px;}
+    .video-play{width:40px;height:40px;font-size:12px;}
+    .values-grid{grid-template-columns:1fr;}
+    .cta-mid{grid-template-columns:1fr;}
+    .cta-mid-item{flex-direction:row;gap:10px;text-align:left;padding:8px 12px;}
+    .cta-mid-item .ico{width:24px;height:24px;}
+    .cta-mid-item .ico svg{width:16px;height:16px;}
+    .cta-left h4{font-size:12px;}
+    .foot-grid{gap:18px;}
+    .foot-bottom{font-size:9px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><span class="ng">NG</span> SERVICE</div>
+      <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">ACCUEIL</a>
+      <a href="services.html">NOS SERVICES</a>
+      <a href="realisations.html">RÉALISATIONS</a>
+      <a href="apropos.html" class="active">À PROPOS</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="tel:+242061234567" class="nav-phone">
+        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.8 2.1z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="num">+242 06 123 45 67</span>
+        <span class="num-short">Appeler</span>
+      </a>
+      <a href="devis.html" class="btn btn-red">
+        <span>✎</span>
+        <span class="full">DEMANDER UN DEVIS</span>
+        <span class="short">DEVIS</span>
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="about-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>À propos
+    </div>
+    <div class="about-grid">
+      <div class="about-content">
+        <h1>À PROPOS DE<br><span class="red">NG SERVICE</span></h1>
+        <div class="bar-accent"></div>
+        <p>NG SERVICE est une entreprise spécialisée dans le nettoyage professionnel. Nous accompagnons particuliers, entreprises et institutions avec des solutions sur mesure pour garantir des espaces propres, sains et agréables.</p>
+      </div>
+      <div class="about-photo-frame">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop" alt="Équipe NG SERVICE en intervention" loading="lazy">
+        </div>
+        <div class="exp-badge">
+          <div class="num">10+</div>
+          <b>ANNÉES D'EXPÉRIENCE</b>
+          <span>au service de la propreté et de l'hygiène</span>
+          <div class="mini-bar"></div>
+        </div>
+      </div>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item">
+        <div class="trust-ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h5>Professionnalisme</h5><p>Une équipe qualifiée et expérimentée.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M9 12.5L7 21l5-3 5 3-2-8.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h5>Qualité</h5><p>Des méthodes et produits efficaces.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+        <div><h5>Réactivité</h5><p>Des interventions rapides.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6M17 8a3 3 0 100-6M22 20c0-3-2-5-4-5.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h5>Confiance</h5><p>Votre satisfaction est notre priorité.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="company">
+  <div class="wrap company-grid">
+    <div class="company-text">
+      <span class="eyebrow">NOTRE ENTREPRISE</span>
+      <h2>Une expertise au service de la <span class="blue">propreté</span></h2>
+      <p>Depuis notre création, NG SERVICE s'engage à offrir des prestations de nettoyage de haute qualité, adaptées aux besoins spécifiques de chaque client.</p>
+      <p>Nous mettons un point d'honneur à utiliser du matériel performant et des produits respectueux de l'environnement pour des résultats impeccables et durables.</p>
+      <div class="company-cta">
+        <a href="devis.html" class="btn btn-red">DEMANDER UN DEVIS →</a>
+        <a href="contact.html" class="btn btn-outline-navy">NOUS CONTACTER →</a>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-ico2"><svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="num">150+</div>
+        <div class="label">Clients satisfaits</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-ico2 blue"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16M8 3v4M16 3v4" stroke-linecap="round"/></svg></div>
+        <div class="num">350+</div>
+        <div class="label">Interventions réalisées</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-ico2"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6M17 8a3 3 0 100-6M22 20c0-3-2-5-4-5.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="num">25+</div>
+        <div class="label">Experts qualifiés</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-ico2 blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M9 12.5L7 21l5-3 5 3-2-8.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="num">100%</div>
+        <div class="label">Engagement qualité</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap story-grid">
+    <div class="video-card">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop" alt="Équipe NG SERVICE" loading="lazy">
+      <div class="video-play">▶</div>
+      <div class="video-caption">
+        <div class="dot">NG</div>
+        <div><b>Découvrez NG SERVICE</b><span>en vidéo</span></div>
+      </div>
+    </div>
+    <div class="values-head">
+      <span class="eyebrow">NOS VALEURS</span>
+      <h2>Les <span class="blue">valeurs</span> qui nous animent</h2>
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-ico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div><h4>Intégrité</h4><p>Nous agissons avec honnêteté et transparence dans toutes nos relations.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-ico blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Engagement</h4><p>Nous nous investissons pleinement pour offrir le meilleur à nos clients.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-ico blue"><svg viewBox="0 0 24 24"><path d="M12 3c5 0 8 3 8 8 0 6-5 10-8 10S4 17 4 11c0-5 3-8 8-8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3v18" stroke-linecap="round"/></svg></div>
+          <div><h4>Respect de l'environnement</h4><p>Nous privilégions des produits écologiques et des pratiques durables.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-ico"><svg viewBox="0 0 24 24"><path d="M2 12l5-4 3 2 4-4 8 8-3 3-5-5-3 3-4-4-2 2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Esprit d'équipe</h4><p>La synergie et la solidarité de notre équipe sont la clé de notre réussite.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-flex">
+    <div class="cta-left">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0116 0v3M4 15a2 2 0 002 2h1v-6H6a2 2 0 00-2 2zM20 15a2 2 0 01-2 2h-1v-6h1a2 2 0 012 2z"/></svg></div>
+      <div>
+        <h4>Besoin d'un partenaire de confiance pour vos besoins en nettoyage ?</h4>
+        <p>NG SERVICE est à votre écoute !</p>
+      </div>
+    </div>
+    <div class="cta-mid">
+      <div class="cta-mid-item">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4" stroke-linecap="round"/></svg></div>
+        <span>Devis gratuit et personnalisé</span>
+      </div>
+      <div class="cta-mid-item">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+        <span>Interventions rapides et efficaces</span>
+      </div>
+      <div class="cta-mid-item">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.8 2.1z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span>Disponible 7j/7 et à votre écoute</span>
+      </div>
+    </div>
+    <div class="cta-right">
+      <a href="devis.html" class="btn btn-red">DEMANDER UN DEVIS →</a>
+      <span class="cta-note">Réponse sous 24h !</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-col">
+      <div class="foot-logo">
+        <a href="index.html" class="logo-mark"><span class="ng">NG</span> SERVICE</a>
+        <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+      </div>
+      <p style="color:#aab0c2;line-height:1.7;font-size:12px;max-width:260px;">NG SERVICE est une entreprise spécialisée dans le nettoyage professionnel. Nous intervenons pour les entreprises, les particuliers et les institutions.</p>
+      <div class="foot-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>LIENS RAPIDES</h5>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="services.html">Nos services</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li class="active-link"><a href="apropos.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>NOS SERVICES</h5>
+      <ul>
+        <li class="check">Nettoyage professionnel</li>
+        <li class="check">Nettoyage de bureaux</li>
+        <li class="check">Nettoyage résidentiel</li>
+        <li class="check">Nettoyage après travaux</li>
+        <li class="check">Nettoyage extérieur</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>COORDONNÉES</h5>
+      <ul class="foot-contact">
+        <li>📞 <span>+242 06 123 45 67<br>+242 05 987 65 43</span></li>
+        <li>✉️ <span>contact@ngservice.cg</span></li>
+        <li>📍 <span>123, Avenue de la Propreté<br>Pointe-Noire, Congo</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    © 2024 NG SERVICE - Tous droits réservés.
+    <span class="up" aria-label="Retour en haut">▲</span>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  }
+
+  // Scroll to top
+  document.querySelector('.foot-bottom .up')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
