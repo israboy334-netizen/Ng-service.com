@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NG SERVICE — La propreté notre priorité</title>
+<title>Demande de devis — NG SERVICE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -24,34 +24,26 @@
   body{
     font-family:'Montserrat',Arial,sans-serif;
     color:var(--ink);
-    background:var(--white);
+    background:var(--bg-soft);
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
   img{max-width:100%;display:block;height:auto;}
   a{text-decoration:none;color:inherit;}
   ul{list-style:none;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 16px;}
-  .eyebrow{
-    color:var(--red);
-    font-weight:700;
-    font-size:11px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    margin-bottom:8px;
-    display:block;
-  }
+  button{font-family:inherit;cursor:pointer;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 16px;}
   .btn{
     display:inline-flex;
     align-items:center;
     justify-content:center;
     gap:8px;
-    padding:10px 16px;
+    padding:10px 14px;
     font-weight:700;
-    font-size:11px;
+    font-size:10px;
     letter-spacing:.4px;
     text-transform:uppercase;
-    border-radius:4px;
+    border-radius:5px;
     border:2px solid transparent;
     cursor:pointer;
     white-space:nowrap;
@@ -59,17 +51,15 @@
   }
   .btn-red{background:var(--red);color:#fff;}
   .btn-red:hover{background:var(--red-dark);}
-  .btn-outline{border-color:rgba(255,255,255,.5);color:#fff;background:transparent;}
-  .btn-outline-navy{border-color:var(--navy);color:var(--navy);background:transparent;}
-  .btn-outline-navy:hover{background:var(--navy);color:#fff;}
 
   /* ===== HEADER ===== */
-  header{background:transparent;position:relative;z-index:20;padding:12px 0 0;}
+  header{background:var(--navy);position:relative;z-index:50;}
   .nav-row{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:8px;
+    padding:10px 0;
+    gap:6px;
     flex-wrap:nowrap;
   }
   .logo{
@@ -96,29 +86,49 @@
   .nav-links{
     display:flex;
     align-items:center;
-    gap:14px;
+    gap:12px;
   }
   .nav-links a{
     color:#fff;
     font-size:10px;
-    font-weight:600;
+    font-weight:700;
     letter-spacing:.4px;
-    padding-bottom:4px;
+    padding-bottom:3px;
     border-bottom:2px solid transparent;
     transition:border-color .2s;
     white-space:nowrap;
   }
-  .nav-links a.active{border-color:var(--red);}
+  .nav-links a.active{color:var(--red);border-color:var(--red);}
   .nav-links a:hover{border-color:var(--red);}
   .nav-actions{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:6px;
     flex-shrink:0;
   }
-  .nav-actions .btn{
+  .nav-phone{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    color:#fff;
     font-size:9px;
-    padding:7px 10px;
+    font-weight:700;
+    padding-right:6px;
+    border-right:1px solid rgba(255,255,255,.2);
+  }
+  .nav-phone svg{
+    width:12px;
+    height:12px;
+    stroke:var(--red);
+    fill:none;
+    stroke-width:1.8;
+    flex-shrink:0;
+  }
+  .nav-phone .num{display:inline;}
+  .nav-phone .num-short{display:none;}
+  .nav-actions .btn{
+    font-size:8px;
+    padding:6px 8px;
   }
   .nav-actions .btn .full{display:inline;}
   .nav-actions .btn .short{display:none;}
@@ -141,413 +151,363 @@
   }
 
   /* ===== HERO ===== */
-  .hero{
+  .devis-hero{
     position:relative;
-    min-height:480px;
-    background:linear-gradient(100deg, rgba(10,15,28,.94) 0%, rgba(10,15,28,.72) 38%, rgba(10,15,28,.28) 62%, rgba(10,15,28,.15) 100%),
-      url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
-    padding-top:0;
-    display:flex;
-    flex-direction:column;
+    background:linear-gradient(100deg, rgba(6,10,20,.96) 0%, rgba(6,10,20,.9) 42%, rgba(6,10,20,.72) 100%),
+      url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    padding:20px 0 0;
+    overflow:hidden;
   }
-  header.on-hero{position:absolute;top:0;left:0;right:0;}
-  .hero-body{
-    flex:1;
-    display:flex;
-    align-items:center;
-    padding:70px 0 30px;
+  .breadcrumb{
+    color:#aab0c2;
+    font-size:10px;
+    font-weight:600;
+    margin-bottom:14px;
   }
-  .hero-content{max-width:100%;width:100%;}
-  .hero-content h1{
+  .breadcrumb a{color:#aab0c2;}
+  .breadcrumb a:hover{color:#fff;}
+  .breadcrumb .red{color:var(--red);}
+  .breadcrumb span{color:#5b647c;margin:0 4px;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:18px;
+    align-items:start;
+  }
+  .hero-content{padding-bottom:0;}
+  .devis-hero h1{
     color:#fff;
-    font-size:28px;
-    line-height:1.08;
+    font-size:24px;
     font-weight:900;
-    letter-spacing:-.5px;
-    margin-bottom:12px;
+    line-height:1.18;
+    margin-bottom:10px;
   }
-  .hero-content h1 .accent{color:var(--red);}
-  .hero-content p{
-    color:#d7dbe6;
-    font-size:13px;
-    line-height:1.6;
+  .devis-hero h1 .red{color:var(--red);display:block;}
+  .bar-accent{width:36px;height:3px;background:var(--red);margin:0 0 10px;}
+  .devis-hero p{
+    color:#c3c8d8;
+    font-size:12px;
+    line-height:1.75;
     max-width:100%;
-    margin-bottom:18px;
   }
-  .hero-cta{
+
+  .hero-photo{
+    border-radius:8px 8px 0 0;
+    overflow:hidden;
+    height:160px;
+  }
+  .hero-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .why-panel{
+    background:var(--navy-2);
+    border-radius:0 0 8px 8px;
+    padding:14px 16px 12px;
+    margin-top:-1px;
+  }
+  .why-panel h4{
+    color:#fff;
+    font-size:12px;
+    font-weight:800;
+    line-height:1.5;
+    margin-bottom:10px;
+  }
+  .why-panel h4 .red{color:var(--red);}
+  .why-row{
     display:flex;
-    flex-wrap:wrap;
+    align-items:flex-start;
     gap:8px;
-    margin-bottom:0;
+    margin-bottom:8px;
   }
-  .hero-cta .btn{font-size:10px;padding:9px 14px;}
-  .hero-stats{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 14px;
-    margin-top:24px;
-    border-top:1px solid rgba(255,255,255,.18);
-    padding-top:14px;
-  }
-  .hero-stats .stat{
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .stat-ico{
+  .why-row:last-child{margin-bottom:0;}
+  .why-dot{
     width:24px;
     height:24px;
-    border:1.5px solid var(--red);
-    border-radius:5px;
+    border-radius:50%;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--red);
+  }
+  .why-dot.blue{background:var(--blue);}
+  .why-dot svg{
+    width:11px;
+    height:11px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:2;
+  }
+  .why-row span{
+    color:#d6d9e3;
+    font-size:10px;
+    line-height:1.5;
+    padding-top:3px;
+  }
+
+  /* ===== FORM SECTION ===== */
+  .devis-main{padding:30px 0 40px;}
+  .main-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+    align-items:start;
+  }
+
+  .form-card{
+    background:#fff;
+    border-radius:10px;
+    padding:20px 16px 18px;
+    box-shadow:0 4px 20px rgba(20,30,60,.05);
+  }
+  .field-title{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:12px;
+  }
+  .field-title .fico{
+    width:18px;
+    height:18px;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-shrink:0;
   }
-  .stat-ico svg{width:12px;height:12px;stroke:var(--red);fill:none;}
-  .stat-text b{
-    display:block;
-    color:#fff;
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:.3px;
+  .field-title .fico svg{
+    width:15px;
+    height:15px;
+    stroke:var(--blue);
+    fill:none;
+    stroke-width:2;
   }
-  .stat-text span{
-    display:block;
-    color:#a9afc0;
-    font-size:8px;
-    margin-top:0px;
+  .field-title.red .fico svg{stroke:var(--red);}
+  .field-title h3{
+    font-size:12px;
+    font-weight:800;
+    color:var(--navy);
+    letter-spacing:.2px;
   }
-  .hero-ba{display:none;}
+  .field-title h3 .red{color:var(--red);}
 
-  /* ===== SERVICES ===== */
-  .services{padding:50px 0 40px;background:#fff;}
-  .services-head{
+  .form-row{
     display:flex;
     flex-direction:column;
     gap:10px;
-    margin-bottom:20px;
-  }
-  .services-head h2{
-    font-size:22px;
-    font-weight:800;
-    line-height:1.25;
-    color:var(--navy);
-    max-width:100%;
-  }
-  .services-head h2 .blue{color:var(--blue);}
-  .services-head p{
-    max-width:100%;
-    color:var(--gray);
-    font-size:12.5px;
-    line-height:1.6;
-  }
-  .service-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:14px;
-    margin-top:16px;
-  }
-  .service-card{
-    border:1px solid var(--line);
-    border-radius:8px;
-    overflow:hidden;
-    transition:box-shadow .2s, transform .2s;
-  }
-  .service-card:hover{box-shadow:0 14px 30px rgba(20,30,60,.1);transform:translateY(-3px);}
-  .service-card .thumb{
-    height:130px;
-    overflow:hidden;
-    position:relative;
-  }
-  .service-card .thumb img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-  .service-icon{
-    width:36px;
-    height:36px;
-    border-radius:50%;
-    background:var(--red);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:absolute;
-    left:14px;
-    bottom:-18px;
-    border:4px solid #fff;
-  }
-  .service-icon.blue{background:var(--blue);}
-  .service-icon svg{width:15px;height:15px;stroke:#fff;fill:none;}
-  .service-card .body{padding:24px 14px 16px;}
-  .service-card h3{
-    font-size:13px;
-    font-weight:700;
-    margin-bottom:4px;
-    color:var(--navy);
-  }
-  .service-card p{
-    font-size:11.5px;
-    color:var(--gray);
-    line-height:1.6;
-  }
-
-  /* ===== WHY US ===== */
-  .why{background:var(--navy);color:#fff;padding:36px 0;}
-  .why-head{text-align:center;margin-bottom:24px;}
-  .why-head .eyebrow{justify-content:center;}
-  .why-head h2{
-    font-size:20px;
-    font-weight:800;
-  }
-  .why-head h2 .blue{color:#4C8DFF;}
-  .why-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-  .why-item{
-    text-align:center;
-    padding:0 8px;
-  }
-  .why-item:not(:last-child){
-    border-bottom:1px solid rgba(255,255,255,.12);
-    padding-bottom:16px;
-  }
-  .why-ico{
-    width:40px;
-    height:40px;
-    margin:0 auto 8px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .why-ico svg{
-    width:26px;
-    height:26px;
-    stroke:var(--red);
-    fill:none;
-    stroke-width:1.6;
-  }
-  .why-ico.blue svg{stroke:#4C8DFF;}
-  .why-item h4{
-    font-size:10.5px;
-    font-weight:800;
-    letter-spacing:.5px;
-    margin-bottom:3px;
-  }
-  .why-item p{
-    font-size:10.5px;
-    color:#aab0c2;
-    line-height:1.6;
-    max-width:260px;
-    margin:0 auto;
-  }
-
-  /* ===== REALISATIONS ===== */
-  .real{padding:40px 0;background:#fff;}
-  .real-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:20px;
-  }
-  .real-head h2{
-    font-size:20px;
-    font-weight:800;
-    color:var(--navy);
-    line-height:1.3;
-    margin-bottom:8px;
-  }
-  .real-head h2 .blue{color:var(--blue);}
-  .tabs{
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-    margin-bottom:12px;
-  }
-  .tab{
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:.3px;
-    padding:5px 10px;
-    border-radius:20px;
-    border:1px solid var(--line);
-    color:var(--gray);
-    cursor:pointer;
-    white-space:nowrap;
-  }
-  .tab.active{
-    background:var(--red);
-    color:#fff;
-    border-color:var(--red);
-  }
-  .real-gallery{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:6px;
-  }
-  .real-gallery .g-item{
-    aspect-ratio:1/1;
-    border-radius:6px;
-    overflow:hidden;
-  }
-  .real-gallery .g-item img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-  .real-more{margin-top:12px;}
-
-  .real-side{display:flex;flex-direction:column;gap:14px;}
-  .panel{
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:12px;
-  }
-  .panel .panel-title{
-    font-size:9px;
-    font-weight:800;
-    color:var(--red);
-    letter-spacing:.5px;
-    margin-bottom:8px;
-  }
-  .ba-wide{
-    position:relative;
-    border-radius:6px;
-    overflow:hidden;
-    aspect-ratio:16/10;
-    cursor:ew-resize;
-  }
-  .ba-wide img{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-  .ba-wide .ba-left{clip-path:inset(0 50% 0 0);}
-  .ba-tag{
-    position:absolute;
-    top:5px;
-    font-size:7px;
-    font-weight:800;
-    color:#fff;
-    letter-spacing:.5px;
-    background:rgba(0,0,0,.55);
-    padding:2px 5px;
-    border-radius:2px;
-    pointer-events:none;
-  }
-  .ba-tag.left{left:5px;}
-  .ba-tag.right{right:5px;}
-  .ba-handle{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:22px;
-    height:22px;
-    background:#fff;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:8px;
-    color:#333;
-    box-shadow:0 2px 6px rgba(0,0,0,.3);
-    pointer-events:none;
-  }
-  .video-panel p.sub{
-    font-size:10px;
-    color:var(--gray);
-    margin:-2px 0 8px;
-  }
-  .video-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:5px;
     margin-bottom:10px;
   }
-  .video-thumb{
-    position:relative;
-    aspect-ratio:16/10;
-    border-radius:4px;
-    overflow:hidden;
+  .form-field{flex:1;display:flex;flex-direction:column;}
+  .form-field label{
+    font-size:10px;
+    color:var(--gray);
+    font-weight:600;
+    margin-bottom:4px;
   }
-  .video-thumb img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-  .video-thumb .play{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(10,15,28,.28);
-  }
-  .video-thumb .play span{
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background:rgba(255,255,255,.92);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:8px;
-    color:var(--navy);
-  }
-  .video-thumb .dur{
-    position:absolute;
-    bottom:3px;
-    right:3px;
-    font-size:7px;
-    color:#fff;
-    background:rgba(0,0,0,.55);
-    padding:1px 4px;
-    border-radius:2px;
-  }
-  .link-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:.4px;
-    color:var(--blue);
+  .form-field label .req{color:var(--red);}
+  input, select, textarea{
     border:1px solid var(--line);
-    padding:7px 12px;
-    border-radius:5px;
-    transition:all .2s;
+    border-radius:6px;
+    padding:9px 12px;
+    font-family:inherit;
+    font-size:11px;
+    color:var(--ink);
+    outline:none;
+    background:#fff;
+    width:100%;
   }
-  .link-btn:hover{background:var(--bg-soft);}
+  input:focus, select:focus, textarea:focus{border-color:var(--blue);}
+  textarea{resize:vertical;min-height:80px;}
+  select{
+    appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235C6478' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 12px center;
+    background-size:12px;
+    padding-right:32px;
+  }
 
-  /* ===== CTA BAND ===== */
-  .cta-band{
-    background:var(--navy);
-    position:relative;
-    overflow:hidden;
-    padding:24px 0;
+  .divider{height:1px;background:var(--line);margin:16px 0 14px;}
+
+  .upload-box{
+    border:1.5px dashed var(--line);
+    border-radius:8px;
+    padding:14px 12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#FAFBFD;
+    cursor:pointer;
   }
-  .cta-inner{
-    position:relative;
-    z-index:2;
-    text-align:center;
+  .upload-ico{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#EAF0FB;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
   }
-  .cta-inner h3{
+  .upload-ico svg{
+    width:14px;
+    height:14px;
+    stroke:var(--blue);
+    fill:none;
+    stroke-width:1.8;
+  }
+  .upload-box b{
+    display:block;
+    font-size:10.5px;
+    color:var(--navy);
+    font-weight:700;
+    margin-bottom:1px;
+  }
+  .upload-box span{
+    font-size:9px;
+    color:var(--gray-light);
+  }
+
+  .bottom-row{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:16px;
+  }
+  .consent{
+    display:flex;
+    align-items:flex-start;
+    gap:6px;
+    font-size:10px;
+    color:var(--gray);
+  }
+  .consent input{
+    width:14px;
+    height:14px;
+    margin-top:1px;
+    accent-color:var(--red);
+    flex-shrink:0;
+  }
+  .submit-btn{
+    background:var(--red);
     color:#fff;
-    font-size:17px;
+    border:none;
+    border-radius:6px;
+    padding:12px 20px;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    cursor:pointer;
+    white-space:nowrap;
+    width:100%;
+  }
+  .submit-btn:hover{background:var(--red-dark);}
+
+  /* ===== SIDEBAR SERVICES ===== */
+  .side-card{
+    background:#fff;
+    border-radius:10px;
+    padding:18px 16px;
+    box-shadow:0 4px 20px rgba(20,30,60,.05);
+  }
+  .side-card h3{
+    font-size:12px;
     font-weight:800;
+    color:var(--navy);
     margin-bottom:2px;
   }
-  .cta-inner p{
-    color:#c3c8d8;
-    font-size:12px;
+  .side-card h3 .blue{color:var(--blue);}
+  .side-line{width:28px;height:3px;background:var(--red);margin:6px 0 12px;}
+  .svc-item{
+    display:flex;
+    gap:10px;
     margin-bottom:12px;
   }
-  .cta-inner .btn{font-size:10px;padding:10px 16px;}
+  .svc-item:last-child{margin-bottom:0;}
+  .svc-ico{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--blue);
+  }
+  .svc-ico.red{background:var(--red);}
+  .svc-ico svg{
+    width:14px;
+    height:14px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:1.8;
+  }
+  .svc-item h4{
+    font-size:11px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:2px;
+  }
+  .svc-item p{
+    font-size:9.5px;
+    color:var(--gray);
+    line-height:1.5;
+  }
+
+  /* ===== INFO BAND ===== */
+  .info-band{
+    background:linear-gradient(90deg, var(--red) 0%, var(--red-dark) 22%, var(--navy-2) 60%, var(--navy) 100%);
+    padding:16px 0;
+  }
+  .info-flex{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .info-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding-bottom:12px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .info-item:last-child{border-bottom:none;padding-bottom:0;}
+  .info-ico{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:rgba(255,255,255,.14);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .info-ico svg{
+    width:14px;
+    height:14px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:1.8;
+  }
+  .info-item b{
+    display:block;
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+  }
+  .info-item span{
+    display:block;
+    color:#e4e7f0;
+    font-size:9.5px;
+    margin-top:1px;
+  }
 
   /* ===== FOOTER ===== */
   footer{background:var(--navy);color:#c3c8d8;padding:30px 0 0;font-size:11px;}
@@ -555,10 +515,10 @@
     display:grid;
     grid-template-columns:1fr;
     gap:20px;
-    padding-bottom:24px;
+    padding-bottom:22px;
     border-bottom:1px solid rgba(255,255,255,.1);
   }
-  .foot-logo{display:flex;flex-direction:column;margin-bottom:6px;}
+  .foot-logo{display:flex;flex-direction:column;margin-bottom:8px;}
   .foot-logo .logo-mark{font-size:18px;}
   .foot-col h5{
     color:#fff;
@@ -572,6 +532,8 @@
     color:#aab0c2;
     font-size:11px;
   }
+  .foot-col ul li a:hover{color:#fff;}
+  .foot-col ul li.active-link a{color:var(--red);}
   .foot-col ul li.check{display:flex;align-items:center;gap:5px;}
   .foot-col ul li.check::before{content:'✓';color:#4C8DFF;font-size:9px;font-weight:800;}
   .foot-contact li{
@@ -588,8 +550,8 @@
     margin-top:8px;
   }
   .foot-social a{
-    width:26px;
-    height:26px;
+    width:24px;
+    height:24px;
     border:1px solid rgba(255,255,255,.25);
     border-radius:50%;
     display:flex;
@@ -605,144 +567,91 @@
     padding:10px 0;
     font-size:9px;
     color:#fff;
-    position:relative;
-  }
-  .foot-bottom .up{
-    display:none;
   }
 
-  /* ===== BREAKPOINTS ===== */
+  /* ============================================================ */
+  /* ====== BREAKPOINTS ====== */
+  /* ============================================================ */
+
   @media(min-width:400px){
     .wrap{padding:0 18px;}
     .logo-mark{font-size:20px;}
     .logo-sub{font-size:7px;}
-    .hero-content h1{font-size:32px;}
-    .nav-actions .btn{font-size:10px;padding:8px 12px;}
+    .devis-hero h1{font-size:26px;}
+    .nav-actions .btn{font-size:9px;padding:7px 10px;}
+    .nav-phone{font-size:10px;}
+    .nav-phone svg{width:13px;height:13px;}
+  }
+
+  @media(min-width:480px){
+    .hero-photo{height:200px;}
+    .devis-hero h1{font-size:28px;}
+    .devis-hero p{font-size:13px;}
+    .why-panel{padding:16px 20px 14px;}
+    .why-panel h4{font-size:13px;}
+    .why-row span{font-size:11px;}
   }
 
   @media(min-width:600px){
     .wrap{padding:0 24px;}
-    .hero-content h1{font-size:36px;}
-    .hero-content p{font-size:14px;max-width:440px;}
-    .hero-stats{gap:12px 24px;}
-    .hero-stats .stat:not(:last-child){
-      padding-right:14px;
-      border-right:1px solid rgba(255,255,255,.18);
-    }
-    .stat-text b{font-size:10px;}
-    .stat-text span{font-size:9px;}
-    .service-grid{grid-template-columns:repeat(2,1fr);gap:18px;}
-    .services-head{
-      flex-direction:row;
-      justify-content:space-between;
-      align-items:flex-end;
-    }
-    .services-head h2{max-width:430px;font-size:24px;}
-    .services-head p{max-width:340px;}
-    .why-grid{grid-template-columns:repeat(2,1fr);}
-    .why-item:not(:last-child){
-      border-bottom:none;
-      padding-bottom:0;
-    }
-    .why-item{position:relative;padding:0 14px;}
-    .why-item:nth-child(odd):not(:last-child)::after{
-      content:'';
-      position:absolute;
-      right:0;
-      top:8px;
-      bottom:8px;
-      width:1px;
-      background:rgba(255,255,255,.14);
-    }
-    .real-grid{grid-template-columns:1.35fr 1fr;gap:24px;}
-    .real-gallery{grid-template-columns:repeat(4,1fr);}
-    .real-gallery .g-item{aspect-ratio:auto;height:80px;}
+    .devis-hero{padding:24px 0 0;}
+    .devis-hero h1{font-size:30px;}
+    .hero-photo{height:220px;}
+    .form-row{flex-direction:row;gap:12px;}
+    .bottom-row{flex-direction:row;align-items:center;justify-content:space-between;}
+    .submit-btn{width:auto;}
+    .info-flex{grid-template-columns:repeat(2,1fr);}
+    .info-item{border-bottom:none;padding-bottom:0;}
+    .info-item:nth-child(odd){border-right:1px solid rgba(255,255,255,.15);padding-right:14px;}
     .foot-grid{grid-template-columns:repeat(2,1fr);}
-    .hero-ba{display:block;}
+    .hero-grid{grid-template-columns:1fr;gap:20px;}
+    .form-card{padding:24px 22px 20px;}
+    .side-card{padding:20px 18px;}
   }
 
   @media(min-width:768px){
-    .hero-content h1{font-size:40px;}
-    .hero-body{padding:80px 0 40px;}
-    .hero-ba{
-      position:absolute;
-      right:20px;
-      bottom:-30px;
-      width:180px;
-      background:#fff;
-      border-radius:6px;
-      padding:5px;
-      box-shadow:0 20px 40px rgba(0,0,0,.35);
-      z-index:5;
-    }
-    .ba-imgs{
-      position:relative;
-      border-radius:3px;
-      overflow:hidden;
-      aspect-ratio:16/10;
-    }
-    .ba-imgs img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    .ba-imgs .ba-left{clip-path:inset(0 50% 0 0);}
-    .why-grid{grid-template-columns:repeat(4,1fr);}
-    .why-item:nth-child(odd)::after{display:none;}
-    .why-item:not(:last-child)::after{
-      content:'';
-      position:absolute;
-      right:0;
-      top:8px;
-      bottom:8px;
-      width:1px;
-      background:rgba(255,255,255,.14);
-    }
+    .devis-hero h1{font-size:32px;}
+    .hero-grid{grid-template-columns:1fr .7fr;gap:24px;align-items:end;}
+    .hero-content{padding-bottom:30px;}
+    .hero-photo{height:240px;border-radius:8px 8px 0 0;}
+    .why-panel{border-radius:0 0 8px 8px;padding:18px 22px 16px;}
+    .form-card{padding:28px 26px 22px;}
+    .side-card{padding:22px 20px;}
+    .info-flex{grid-template-columns:repeat(4,1fr);}
+    .info-item{border-right:1px solid rgba(255,255,255,.15);padding-right:16px;border-bottom:none;}
+    .info-item:last-child{border-right:none;padding-right:0;}
     .foot-grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr;}
-    .foot-bottom .up{
-      display:flex;
-      position:absolute;
-      right:16px;
-      top:50%;
-      transform:translateY(-50%);
-      width:20px;
-      height:20px;
-      background:var(--red);
-      align-items:center;
-      justify-content:center;
-      font-size:9px;
-      color:#fff;
-      border-radius:3px;
-      cursor:pointer;
-    }
   }
 
   @media(min-width:1024px){
     .wrap{padding:0 32px;}
-    .hero-content h1{font-size:47px;}
-    .hero-body{padding:100px 0 60px;}
-    .hero-ba{width:220px;right:32px;bottom:-50px;}
-    .hero-ba .ba-imgs{height:130px;aspect-ratio:auto;}
-    .service-grid{grid-template-columns:repeat(4,1fr);gap:24px;}
-    .services{padding:80px 0 60px;}
-    .services-head h2{font-size:28px;}
-    .why{padding:48px 0;}
-    .why-head h2{font-size:24px;}
-    .real{padding:60px 0;}
-    .real-head h2{font-size:24px;}
+    .devis-hero{padding:26px 0 0;}
+    .devis-hero h1{font-size:34px;}
+    .hero-grid{grid-template-columns:1fr .78fr;gap:30px;}
+    .hero-photo{height:260px;}
+    .main-grid{grid-template-columns:1.9fr 1fr;gap:30px;}
+    .form-card{padding:32px 32px 28px;}
+    .side-card{padding:24px 22px;}
     .nav-links{display:flex;}
     .burger{display:none;}
     .nav-actions .btn .short{display:none;}
     .nav-actions .btn .full{display:inline;}
-    .nav-actions .btn{font-size:11px;padding:10px 18px;}
-    .foot-grid{gap:28px;}
-    .foot-bottom .up{right:32px;}
+    .nav-phone .num-short{display:none;}
+    .nav-phone .num{display:inline;}
+    .nav-actions .btn{font-size:10px;padding:8px 14px;}
+    .nav-phone{font-size:11px;padding-right:10px;}
+    .nav-phone svg{width:14px;height:14px;}
+    .info-flex{gap:0;}
+    .info-item{padding-right:24px;}
+  }
+
+  @media(min-width:1280px){
+    .devis-hero h1{font-size:36px;}
+    .hero-photo{height:280px;}
   }
 
   @media(min-width:1440px){
-    .hero-content h1{font-size:52px;}
+    .devis-hero h1{font-size:38px;}
   }
 
   /* ===== MENU MOBILE ===== */
@@ -768,253 +677,253 @@
     .burger{display:flex;}
     .nav-actions .btn .full{display:none;}
     .nav-actions .btn .short{display:inline;}
+    .nav-phone .num{display:none;}
+    .nav-phone .num-short{display:inline;}
   }
 
-  @media(max-width:379px){
-    .wrap{padding:0 12px;}
-    .hero-content h1{font-size:24px;}
-    .hero-content p{font-size:11px;}
-    .btn{font-size:9px;padding:7px 10px;}
-    .hero-cta .btn{font-size:9px;padding:7px 10px;}
-    .logo-mark{font-size:16px;}
-    .logo-sub{font-size:6px;}
-    .hero-stats .stat{width:100%;}
-    .stat-text b{font-size:8px;}
-    .stat-text span{font-size:7px;}
-    .service-card .thumb{height:110px;}
-    .real-gallery{grid-template-columns:repeat(2,1fr);gap:4px;}
-    .video-grid{grid-template-columns:repeat(3,1fr);gap:4px;}
+  /* ===== TRÈS PETIT MOBILE ===== */
+  @media(max-width:369px){
+    .wrap{padding:0 10px;}
+    .logo-mark{font-size:15px;}
+    .logo-sub{font-size:5.5px;}
+    .nav-phone{font-size:8px;padding-right:4px;}
+    .nav-phone svg{width:10px;height:10px;}
+    .nav-actions .btn{font-size:7px;padding:4px 6px;gap:3px;}
+    .devis-hero h1{font-size:20px;}
+    .devis-hero p{font-size:11px;}
+    .hero-photo{height:130px;}
+    .why-panel{padding:10px 12px 10px;}
+    .why-panel h4{font-size:11px;}
+    .why-row span{font-size:9px;}
+    .why-dot{width:20px;height:20px;}
+    .why-dot svg{width:10px;height:10px;}
+    .form-card{padding:16px 12px 14px;}
+    .field-title h3{font-size:11px;}
+    input, select, textarea{font-size:10px;padding:8px 10px;}
+    .submit-btn{font-size:10px;padding:10px 14px;}
+    .side-card{padding:14px 12px;}
+    .svc-item h4{font-size:10px;}
+    .svc-item p{font-size:9px;}
+    .info-item b{font-size:10px;}
+    .info-item span{font-size:9px;}
+    .foot-grid{gap:16px;}
     .foot-bottom{font-size:8px;}
-    .foot-bottom .up{display:none;}
-    .services-head h2{font-size:18px;}
-    .why-head h2{font-size:17px;}
-    .cta-inner h3{font-size:15px;}
-    .cta-inner p{font-size:11px;}
-    .nav-actions .btn{font-size:8px;padding:5px 8px;gap:3px;}
+    .upload-box{padding:10px;}
+    .upload-box b{font-size:9.5px;}
+    .upload-box span{font-size:8px;}
+    .upload-ico{width:28px;height:28px;}
+    .upload-ico svg{width:12px;height:12px;}
   }
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <header class="on-hero">
-    <div class="wrap nav-row">
-      <div class="logo">
+<header>
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><span class="ng">NG</span> SERVICE</div>
+      <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">ACCUEIL</a>
+      <a href="services.html">SERVICES</a>
+      <a href="realisations.html">RÉALISATIONS</a>
+      <a href="apropos.html">À PROPOS</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="tel:+242061234567" class="nav-phone">
+        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.8 2.1z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="num">+242 06 123 45 67</span>
+        <span class="num-short">Appeler</span>
+      </a>
+      <a href="devis.html" class="btn btn-red">
+        <span>✎</span>
+        <span class="full">DEMANDER UN DEVIS</span>
+        <span class="short">DEVIS</span>
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="devis-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span><span class="red">Demande de devis</span>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1>DEMANDEZ VOTRE<br><span class="red">DEVIS GRATUIT</span></h1>
+        <div class="bar-accent"></div>
+        <p>Remplissez le formulaire ci-dessous et notre équipe vous répondra rapidement avec une offre adaptée à vos besoins.</p>
+      </div>
+      <div>
+        <div class="hero-photo">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=900&auto=format&fit=crop" alt="Nettoyage professionnel NG SERVICE" loading="lazy">
+        </div>
+        <div class="why-panel">
+          <h4>POURQUOI DEMANDER UN DEVIS CHEZ <span class="red">NG</span> SERVICE ?</h4>
+          <div class="why-row">
+            <div class="why-dot"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg></div>
+            <span>Devis gratuit et sans engagement</span>
+          </div>
+          <div class="why-row">
+            <div class="why-dot blue"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Réponse rapide sous 24h</span>
+          </div>
+          <div class="why-row">
+            <div class="why-dot"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke-linecap="round"/></svg></div>
+            <span>Solutions sur mesure adaptées à vos besoins</span>
+          </div>
+          <div class="why-row">
+            <div class="why-dot blue"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.8 2.1z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span>Accompagnement personnalisé</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="devis-main">
+  <div class="wrap main-grid">
+    <form class="form-card" id="devisForm">
+      <div class="field-title">
+        <div class="fico"><svg viewBox="0 0 24 24"><path d="M17 3a2.85 2.85 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>VOS INFORMATIONS</h3>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Nom complet <span class="req">*</span></label><input type="text" placeholder="Nom complet" required></div>
+        <div class="form-field"><label>Entreprise (optionnel)</label><input type="text" placeholder="Entreprise (optionnel)"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Téléphone <span class="req">*</span></label><input type="tel" placeholder="Téléphone" required></div>
+        <div class="form-field"><label>Email <span class="req">*</span></label><input type="email" placeholder="Email" required></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field-title red">
+        <div class="fico"><svg viewBox="0 0 24 24"><path d="M9 3h6a2 2 0 012 2v1H7V5a2 2 0 012-2z"/><rect x="4" y="6" width="16" height="15" rx="2"/></svg></div>
+        <h3>VOTRE <span class="red">DEMANDE</span></h3>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Type de service souhaité <span class="req">*</span></label>
+          <select required>
+            <option value="">Sélectionnez un service</option>
+            <option>Nettoyage professionnel</option>
+            <option>Nettoyage résidentiel</option>
+            <option>Nettoyage après travaux</option>
+            <option>Nettoyage extérieur</option>
+            <option>Nettoyage industriel</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Lieu d'intervention <span class="req">*</span></label><input type="text" placeholder="Ville / Adresse" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Décrivez vos besoins <span class="req">*</span></label>
+          <textarea placeholder="Décrivez en détail vos besoins, la surface à nettoyer, la fréquence souhaitée, etc." required></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Date souhaitée de début (optionnel)</label><input type="text" placeholder="JJ / MM / AAAA"></div>
+        <div class="form-field">
+          <label>Fréquence souhaitée</label>
+          <select>
+            <option value="">Ponctuelle / Quotidienne / Hebdomadaire / Mensuelle</option>
+            <option>Ponctuelle</option>
+            <option>Quotidienne</option>
+            <option>Hebdomadaire</option>
+            <option>Mensuelle</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field-title">
+        <div class="fico"><svg viewBox="0 0 24 24"><path d="M21.4 11.1l-8.9 8.9a5 5 0 01-7.1-7.1l9-9a3.5 3.5 0 014.9 4.9l-9 9a2 2 0 01-2.9-2.9l8.2-8.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>AJOUTER DES FICHIERS <span style="color:var(--gray-light);font-weight:600;font-size:9px;">(OPTIONNEL)</span></h3>
+      </div>
+      <label class="upload-box">
+        <div class="upload-ico"><svg viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 010-9 5.5 5.5 0 0110.6-1.5A4 4 0 0117 15" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12v7M9 15l3-3 3 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div>
-          <div class="logo-mark"><span class="ng">NG</span> SERVICE</div>
-          <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
+          <b>Glissez vos fichiers ici ou cliquez pour parcourir</b>
+          <span>Formats acceptés : PDF, JPG, PNG (Max 5 Mo)</span>
         </div>
-      </div>
-      <nav class="nav-links" id="navLinks">
-        <a href="index.html" class="active">ACCUEIL</a>
-        <a href="services.html">NOS SERVICES</a>
-        <a href="realisations.html">RÉALISATIONS</a>
-        <a href="apropos.html">À PROPOS</a>
-        <a href="contact.html">CONTACT</a>
-      </nav>
-      <div class="nav-actions">
-        <a href="devis.html" class="btn btn-red">
-          <span class="full">DEMANDER UN DEVIS</span>
-          <span class="short">DEVIS</span>
-          <span>✎</span>
-        </a>
-        <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+        <input type="file" style="display:none">
+      </label>
 
-  <div class="wrap hero-body">
-    <div class="hero-content">
-      <h1>LA PROPRETÉ<br>QUI FAIT<br><span class="accent">LA DIFFÉRENCE</span></h1>
-      <p>NG SERVICE vous accompagne avec des solutions professionnelles de nettoyage adaptées à vos besoins.</p>
-      <div class="hero-cta">
-        <a href="devis.html" class="btn btn-red">DEMANDER UN DEVIS →</a>
-        <a href="services.html" class="btn btn-outline">NOS SERVICES →</a>
+      <div class="bottom-row">
+        <label class="consent">
+          <input type="checkbox">
+          J'accepte d'être recontacté(e) par NG SERVICE.
+        </label>
+        <button type="submit" class="submit-btn">ENVOYER MA DEMANDE →</button>
       </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="stat-text"><b>PROFESSIONNELS</b><span>Qualifiés</span></div>
-        </div>
-        <div class="stat">
-          <div class="stat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
-          <div class="stat-text"><b>RAPIDES</b><span>Interventions</span></div>
-        </div>
-        <div class="stat">
-          <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="stat-text"><b>FIABLES</b><span>Qualité</span></div>
-        </div>
-        <div class="stat">
-          <div class="stat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="stat-text"><b>DISPONIBLES</b><span>7j/7</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </form>
 
-  <div class="hero-ba">
-    <div class="ba-imgs">
-      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400&auto=format&fit=crop" alt="Après">
-      <img class="ba-left" src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=400&auto=format&fit=crop" alt="Avant">
-      <span class="ba-tag left">AVANT</span>
-      <span class="ba-tag right">APRÈS</span>
-      <div class="ba-handle">⇔</div>
-    </div>
-  </div>
-</div>
-
-<section class="services" id="services">
-  <div class="wrap">
-    <div class="services-head">
-      <h2>Des solutions de nettoyage adaptées à <span class="blue">chaque besoin</span></h2>
-      <p>NG SERVICE vous propose une gamme complète de prestations pour garantir la propreté et l'hygiène de vos espaces.</p>
-    </div>
-    <span class="eyebrow">NOS SERVICES</span>
-    <div class="service-grid">
-      <div class="service-card">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=500&auto=format&fit=crop" alt="Nettoyage professionnel" loading="lazy">
-          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-        <div class="body">
-          <h3>Nettoyage professionnel</h3>
-          <p>Entretien complet de vos locaux professionnels avec des produits et matériels adaptés.</p>
-        </div>
+    <div class="side-card">
+      <h3>NOS <span class="blue">SERVICES</span></h3>
+      <div class="side-line"></div>
+      <div class="svc-item">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h4>Nettoyage professionnel</h4><p>Bureaux, commerces, immeubles</p></div>
       </div>
-      <div class="service-card">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=500&auto=format&fit=crop" alt="Nettoyage de bureaux" loading="lazy">
-          <div class="service-icon blue"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="1"/><path d="M9 21h6M12 16v5" stroke-linecap="round"/></svg></div>
-        </div>
-        <div class="body">
-          <h3>Nettoyage de bureaux</h3>
-          <p>Des espaces de travail propres pour un environnement sain et productif.</p>
-        </div>
+      <div class="svc-item">
+        <div class="svc-ico red"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h4>Nettoyage résidentiel</h4><p>Maisons, appartements, résidences</p></div>
       </div>
-      <div class="service-card">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?q=80&w=500&auto=format&fit=crop" alt="Nettoyage résidentiel" loading="lazy">
-          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7M6 10v10h12V10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-        <div class="body">
-          <h3>Nettoyage résidentiel</h3>
-          <p>Nous prenons soin de votre maison pour un cadre de vie propre et agréable.</p>
-        </div>
+      <div class="svc-item">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6M17 8a3 3 0 100-6M22 20c0-3-2-5-4-5.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h4>Nettoyage après travaux</h4><p>Remise en état, élimination des déchets</p></div>
       </div>
-      <div class="service-card">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1580901368919-7738efb0f87e?q=80&w=500&auto=format&fit=crop" alt="Nettoyage après travaux" loading="lazy">
-          <div class="service-icon blue"><svg viewBox="0 0 24 24"><path d="M14.7 6.3l3 3L7 20H4v-3L14.7 6.3z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-        <div class="body">
-          <h3>Nettoyage après travaux</h3>
-          <p>Remise en état de vos espaces après travaux : poussières, déchets et résidus éliminés.</p>
-        </div>
+      <div class="svc-item">
+        <div class="svc-ico red"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 10h16M10 4v16" stroke-linecap="round"/></svg></div>
+        <div><h4>Nettoyage extérieur</h4><p>Façades, vitres, terrasses, parkings</p></div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 21V9l6-4 6 4v12M15 21V13l6-3v11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h4>Nettoyage industriel</h4><p>Usines, entrepôts, ateliers</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="why">
-  <div class="wrap">
-    <div class="why-head">
-      <span class="eyebrow">POURQUOI NOUS CHOISIR</span>
-      <h2>NG SERVICE, <span class="blue">l'excellence</span> à chaque intervention</h2>
+<section class="info-band">
+  <div class="wrap info-flex">
+    <div class="info-item">
+      <div class="info-ico"><svg viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0116 0v3M4 15a2 2 0 002 2h1v-6H6a2 2 0 00-2 2zM20 15a2 2 0 01-2 2h-1v-6h1a2 2 0 012 2z"/></svg></div>
+      <div><b>Besoin d'aide ?</b><span>Notre équipe est à votre écoute !</span></div>
     </div>
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>PROFESSIONNALISME</h4>
-        <p>Une équipe formée et expérimentée pour un travail impeccable.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-ico blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M9 12.5L7 21l5-3 5 3-2-8.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>QUALITÉ</h4>
-        <p>Des produits de qualité et des méthodes efficaces.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
-        <h4>RAPIDITÉ</h4>
-        <p>Interventions rapides et respect des délais convenus.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-ico blue"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6M17 8a3 3 0 100-6M22 20c0-3-2-5-4-5.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>SATISFACTION</h4>
-        <p>Votre satisfaction est notre priorité absolue.</p>
-      </div>
+    <div class="info-item">
+      <div class="info-ico"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.8 2.1z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><b>+242 06 123 45 67</b><span>Appelez-nous</span></div>
+    </div>
+    <div class="info-item">
+      <div class="info-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><b>contact@ngservice.cg</b><span>Envoyez-nous un email</span></div>
+    </div>
+    <div class="info-item">
+      <div class="info-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+      <div><b>Lun - Sam : 07h - 18h</b><span>Nous sommes disponibles</span></div>
     </div>
   </div>
 </section>
 
-<section class="real" id="realisations">
-  <div class="wrap real-grid">
-    <div class="real-main">
-      <div class="real-head">
-        <span class="eyebrow">NOS RÉALISATIONS</span>
-        <h2>Quelques-unes de nos <span class="blue">interventions</span></h2>
-      </div>
-      <div class="tabs">
-        <span class="tab active">TOUTES</span>
-        <span class="tab">BUREAUX</span>
-        <span class="tab">RÉSIDENTIEL</span>
-        <span class="tab">APRÈS TRAVAUX</span>
-      </div>
-      <div class="real-gallery">
-        <div class="g-item"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="g-item"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="g-item"><img src="https://images.unsplash.com/photo-1585421514738-01798e348b17?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="g-item"><img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="g-item"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="g-item"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="g-item"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="g-item"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=300&auto=format&fit=crop" alt="" loading="lazy"></div>
-      </div>
-      <div class="real-more"><a class="link-btn" href="realisations.html">VOIR PLUS DE RÉALISATIONS →</a></div>
-    </div>
-
-    <div class="real-side">
-      <div class="panel">
-        <div class="panel-title">AVANT / APRÈS</div>
-        <div class="ba-wide">
-          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=500&auto=format&fit=crop" alt="Après">
-          <img class="ba-left" src="https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=500&auto=format&fit=crop" alt="Avant">
-          <span class="ba-tag left">AVANT</span>
-          <span class="ba-tag right">APRÈS</span>
-          <div class="ba-handle">⇔</div>
-        </div>
-      </div>
-      <div class="panel video-panel">
-        <div class="panel-title">NOS RÉALISATIONS VIDÉO</div>
-        <p class="sub">Découvrez notre travail en action</p>
-        <div class="video-grid">
-          <div class="video-thumb"><img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?q=80&w=200&auto=format&fit=crop" alt="" loading="lazy"><div class="play"><span>▶</span></div><span class="dur">01:25</span></div>
-          <div class="video-thumb"><img src="https://images.unsplash.com/photo-1581578021450-63a1a531c8f9?q=80&w=200&auto=format&fit=crop" alt="" loading="lazy"><div class="play"><span>▶</span></div><span class="dur">01:40</span></div>
-          <div class="video-thumb"><img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=200&auto=format&fit=crop" alt="" loading="lazy"><div class="play"><span>▶</span></div><span class="dur">01:18</span></div>
-        </div>
-        <a class="link-btn" href="realisations.html">VOIR TOUTES LES VIDÉOS →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-band" id="devis">
-  <div class="wrap cta-inner">
-    <h3>BESOIN D'UN ESPACE IMPECCABLE ?</h3>
-    <p>Parlons de votre projet</p>
-    <a href="devis.html" class="btn btn-red">DEMANDER UN DEVIS GRATUIT →</a>
-  </div>
-</section>
-
-<footer id="apropos">
+<footer>
   <div class="wrap foot-grid">
     <div class="foot-col">
       <div class="foot-logo">
         <a href="index.html" class="logo-mark"><span class="ng">NG</span> SERVICE</a>
         <div class="logo-sub">LA PROPRETÉ NOTRE PRIORITÉ</div>
       </div>
-      <p style="color:#aab0c2;line-height:1.7;font-size:11px;max-width:260px;">NG SERVICE est une entreprise spécialisée dans le nettoyage professionnel. Nous intervenons pour les entreprises et les particuliers avec rigueur et efficacité.</p>
+      <p style="color:#aab0c2;line-height:1.7;font-size:11px;max-width:260px;">NG SERVICE est une entreprise spécialisée dans le nettoyage professionnel. Nous intervenons pour les entreprises, les particuliers et les institutions avec rigueur et efficacité.</p>
       <div class="foot-social">
         <a href="#" aria-label="Facebook">f</a>
         <a href="#" aria-label="LinkedIn">in</a>
@@ -1036,13 +945,14 @@
       <h5>NOS SERVICES</h5>
       <ul>
         <li class="check">Nettoyage professionnel</li>
-        <li class="check">Nettoyage de bureaux</li>
         <li class="check">Nettoyage résidentiel</li>
         <li class="check">Nettoyage après travaux</li>
+        <li class="check">Nettoyage extérieur</li>
+        <li class="check">Nettoyage industriel</li>
       </ul>
     </div>
-    <div class="foot-col" id="contact">
-      <h5>NOS COORDONNÉES</h5>
+    <div class="foot-col">
+      <h5>COORDONNÉES</h5>
       <ul class="foot-contact">
         <li>📞 <span>+242 06 123 45 67<br>+242 05 987 65 43</span></li>
         <li>✉️ <span>contact@ngservice.cg</span></li>
@@ -1050,10 +960,7 @@
       </ul>
     </div>
   </div>
-  <div class="foot-bottom">
-    © 2024 NG SERVICE - Tous droits réservés.
-    <span class="up" aria-label="Retour en haut">▲</span>
-  </div>
+  <div class="foot-bottom">© 2024 NG SERVICE - Tous droits réservés.</div>
 </footer>
 
 <script>
@@ -1064,26 +971,10 @@
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
   }
 
-  document.querySelectorAll('.ba-imgs, .ba-wide').forEach(media => {
-    const left = media.querySelector('.ba-left');
-    if (!left) return;
-    const setPos = (x) => {
-      const rect = media.getBoundingClientRect();
-      let pct = ((x - rect.left) / rect.width) * 100;
-      pct = Math.max(0, Math.min(100, pct));
-      left.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-      const handle = media.querySelector('.ba-handle');
-      if (handle) handle.style.left = pct + '%';
-    };
-    media.addEventListener('mousemove', e => setPos(e.clientX));
-    media.addEventListener('touchmove', e => {
-      e.preventDefault();
-      setPos(e.touches[0].clientX);
-    });
-  });
-
-  document.querySelector('.foot-bottom .up')?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('devisForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Merci pour votre demande ! Notre équipe vous recontactera rapidement avec une offre adaptée.');
+    this.reset();
   });
 </script>
 </body>
